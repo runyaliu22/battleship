@@ -4,9 +4,13 @@ import java.util.HashMap;
 
 //public class BasicShip implements Ship<Character> {
 
-public class BasicShip<T> implements Ship<T> {
+public abstract class BasicShip<T> implements Ship<T> {
 
   protected ShipDisplayInfo<T> myDisplayInfo;
+
+ 
+
+  
 
   // private final Coordinate myLocation;
 
@@ -29,9 +33,15 @@ public class BasicShip<T> implements Ship<T> {
       this.myPieces.put(c, false);
     }
 
-    
-
   }
+
+
+  protected void checkCoordinateInThisShip(Coordinate c){
+    if (myPieces.get(c) == null){
+      throw new IllegalArgumentException("the coordinate c does not belong to this ship");
+    }
+  }//added
+  
 
   @Override
   public boolean occupiesCoordinates(Coordinate where) {
@@ -42,6 +52,7 @@ public class BasicShip<T> implements Ship<T> {
     else{
       return true;
     }
+    
     //if (myPieces.containsKey(where)) {
     //return true;
     //} else {
@@ -53,29 +64,36 @@ public class BasicShip<T> implements Ship<T> {
 
   @Override
   public boolean isSunk() {
-    // TODO Auto-generated method stub
-    return false;
+
+    for (Coordinate c : myPieces.keySet()){
+      if (myPieces.get(c) == false){
+        return false;
+      }
+    }
+    return true;
   }
 
   @Override
-  public void recordHitAt(Coordinate where) {
-    // TODO Auto-generated method stub
+  public void  recordHitAt(Coordinate where) {
+    
+    checkCoordinateInThisShip(where);
+    myPieces.put(where, true);
 
   }
 
   @Override
   public boolean wasHitAt(Coordinate where) {
 
-    return false;
+    checkCoordinateInThisShip(where);
+    return myPieces.get(where);
   }
 
   @Override
   public T getDisplayInfoAt(Coordinate where) {
 
     //return 's';
-    //TODO this is not right.  We need to
-    //look up the hit status of this coordinate
-    return myDisplayInfo.getInfo(where, false);
+    
+    return myDisplayInfo.getInfo(wasHitAt(where));//added
 
   }
 

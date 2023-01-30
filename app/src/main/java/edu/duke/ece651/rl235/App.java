@@ -12,6 +12,8 @@ import java.io.Reader;
 
 public class App {
 
+  private final AbstractShipFactory<Character> shipFactory;
+
   private final Board<Character> theBoard;
 
   private final BoardTextView view;
@@ -31,14 +33,15 @@ public class App {
     // this.inputReader = new BufferedReader(new InputStreamReader(System.in));
     // this.out = System.out;
 
+    this.shipFactory = new V1ShipFactory();//need this constructor to implement
+    
     this.theBoard = theBoard;
 
     this.view = new BoardTextView(theBoard);
 
     this.inputReader = new BufferedReader(inputSource);
 
-    this.out = out;//!interesting!
-
+    this.out = out;//!interesting!!
   }
 
   public Placement readPlacement(String prompt) throws IOException {
@@ -47,7 +50,7 @@ public class App {
 
     String s = inputReader.readLine();
 
-    return new Placement(s);
+    return new Placement(s);//will throw if invalid orientation!
 
   }
 
@@ -57,16 +60,19 @@ public class App {
 
     Placement p = readPlacement(prompt);
 
-    Coordinate c = p.getCoordinate();
+    //Coordinate c = p.getCoordinate();
 
     //Ship  s = new BasicShip<Character>(c);
     
-    RectangleShip<Character> s = new RectangleShip<Character>(c, 's', '*');
+    //Ship<Character> s = new RectangleShip<Character>(c, 's', '*');
+
+    Ship<Character> s  = shipFactory.makeDestroyer(p);
 
     theBoard.tryAddShip(s);
+    //s.recordHitAt(new Coordinate("Q4"));
 
-    out.println(view.displayMyOwnBoard()); // meaning?
 
+    out.println(view.displayMyOwnBoard()); // meaning?print write to out
   }
   
   

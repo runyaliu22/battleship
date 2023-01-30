@@ -13,7 +13,8 @@ public class SimpleShipDisplayInfo<T> implements ShipDisplayInfo<T> {
   }
 
   @Override
-  public T getInfo(Coordinate where, boolean hit) {//what's coordinate for?
+  //public T getInfo(Coordinate where, boolean hit) {//what's coordinate for?
+  public T getInfo(boolean hit) {
     if (hit == true){
       return onHit;
     }

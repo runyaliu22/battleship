@@ -16,8 +16,8 @@ public class Placement {
     
     this.orientation = ori;
   }
-
-  public Placement(String descr){
+  
+    public Placement(String descr){
     if (descr.length() != 3){
       throw new IllegalArgumentException("The length of descr should be 3!");
     }

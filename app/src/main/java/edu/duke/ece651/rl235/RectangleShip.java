@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 public class RectangleShip<T> extends BasicShip<T> {
 
+  private final String name;
   
 
   static HashSet<Coordinate> makeCoords(Coordinate upperLeft, int width, int height){//public?
@@ -23,22 +24,31 @@ public class RectangleShip<T> extends BasicShip<T> {
     return mySet;
 
     
-    
   }
 
-  public RectangleShip(Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> info){
+  public RectangleShip(String name,Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> info){
 
     super(makeCoords(upperLeft, width, height), info);//Is it right?
+    this.name = name;
     //call the constructor of the parent class
     
   }
 
-  public RectangleShip(Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));//calling the constructor right above
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
+    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));//calling the constructor right above
   }
-  public RectangleShip(Coordinate upperLeft, T data, T onHit) {
-    this(upperLeft, 1, 1, data, onHit);
+  
+  public RectangleShip(Coordinate upperLeft, T data, T onHit) {//convinience constructor
+    this("testship", upperLeft, 1, 1, data, onHit);
   }//call the constructor right above
+
+  
+
+  @Override
+  public String getName() {
+
+    return name;
+  }
 
 
     

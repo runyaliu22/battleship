@@ -69,7 +69,7 @@ class AppTest {
 
       PrintStream ps = new PrintStream(bytes, true);//write printstream into bytes
 
-      Board<Character> b = new BattleShipBoard<Character>(3, 1);
+      Board<Character> b = new BattleShipBoard<Character>(3, 2);
 
       App app = new App(b, sr, ps);//read from stringreader and writes to printstream
 
@@ -78,11 +78,19 @@ class AppTest {
       app.doOnePlacement();
 
 
-      assertEquals('s', b.whatIsAt(new Coordinate("A0")));
+      //assertEquals('s', b.whatIsAt(new Coordinate("A0")));
+
+      assertEquals('d', b.whatIsAt(new Coordinate("A0")));
 
       assertEquals(null, b.whatIsAt(new Coordinate("A1")));
 
       assertEquals(null, b.whatIsAt(new Coordinate("A2")));
+
+       assertEquals('d', b.whatIsAt(new Coordinate("B0")));
+
+       // assertEquals('d', b.whatIsAt(new Coordinate("C0")));
+
+      
 
       bytes.reset();
     
