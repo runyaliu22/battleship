@@ -1,4 +1,4 @@
-package edu.duke.ece651.rl235;
+package edu.duke.adh39.battleship;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -82,17 +82,8 @@ public class BoardTextViewTest {
     String expectedHeader= "  0|1|2\n";
     
     Board<Character> b1 = new BattleShipBoard<Character>(3, 2);
-    
-    //Ship<Character> s1 = new BasicShip(new Coordinate("A1"));
-
-    Ship<Character> s1 = new RectangleShip<Character>(new Coordinate("A1"), 's', '*');
-
-    
-    //Ship<Character> s2 = new BasicShip(new Coordinate("B2"));
-
-    Ship<Character> s2 = new RectangleShip<Character>(new Coordinate("B2"), 's', '*');
-
-    
+    Ship<Character> s1 = new BasicShip(new Coordinate("A1"));
+    Ship<Character> s2 = new BasicShip(new Coordinate("B2"));
     
     
     b1.tryAddShip(s1);

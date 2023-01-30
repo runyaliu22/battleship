@@ -1,0 +1,147 @@
+package edu.duke.adh39.battleship;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class PlacementTest {
+  @Test
+  public void test_constructor1() {
+
+    Coordinate c1 = new Coordinate(20, 10);
+    Coordinate c2 = new Coordinate(20, 10);
+    
+    Placement p1 = new Placement(c1, 'v');
+    assertEquals('V', p1.getOrientation());
+    assertEquals(c1, p1.getCoordinate());
+
+    Placement p2 = new Placement(c2, 'V');
+    assertEquals('V', p1.getOrientation());
+    assertEquals(c2, p2.getCoordinate());
+
+     Placement p3 = new Placement(c1, 'h');
+    assertEquals('H', p3.getOrientation());
+    assertEquals(c1, p3.getCoordinate());
+
+    Placement p4 = new Placement(c1, 'H');
+    assertEquals('H', p4.getOrientation());
+    assertEquals(c1, p4.getCoordinate());
+     
+    assertEquals(p1, p2);
+    assertEquals(p3, p4);
+
+    assertThrows(IllegalArgumentException.class, () -> new Placement(c1, 'a'));
+
+
+    
+  }
+
+  @Test
+  public void test_constructor2() {
+
+
+    Placement p1 = new Placement("B4h");
+    Coordinate c1 = new Coordinate("B4");
+    assertEquals('H', p1.getOrientation());
+    assertEquals(c1, p1.getCoordinate());
+
+    Placement p2 = new Placement("Z4H");
+    Coordinate c2 = new Coordinate("Z4");
+    assertEquals('H', p2.getOrientation());
+    assertEquals(c2, p2.getCoordinate());
+    
+  
+    Placement p3 = new Placement("A0V");
+    Coordinate c3 = new Coordinate("A0");
+    assertEquals('V', p3.getOrientation());
+    assertEquals(c3, p3.getCoordinate());
+
+    Placement p4 = new Placement("A0v");
+    Coordinate c4 = new Coordinate("A0");
+    assertEquals('V', p4.getOrientation());
+    assertEquals(c4, p4.getCoordinate());
+
+    
+  }
+
+
+
+    @Test
+  public void test_toString(){
+      
+    Coordinate c1 = new Coordinate(20, 10);
+    
+    Placement p1 = new Placement(c1, 'v');
+    assertEquals("(20, 10) V", p1.toString());
+    assertNotEquals("(4, 5)", p1.toString());
+
+    Placement p2 = new Placement("A0v");
+    assertEquals("(0, 0) V", p2.toString());
+
+    
+    
+  }
+
+   @Test
+  public void test_equals() {
+    Placement p1 = new Placement("B4h");
+    Placement p2 = new Placement("B4h");
+    Placement p3 = new Placement("A0v");
+    Placement p4 = new Placement("A0h");
+    
+    assertEquals(p1, p1);   //equals should be reflexsive
+    assertEquals(p1, p2);   //different objects bu same contents
+    assertNotEquals(p1, p3);  //different contents
+    assertNotEquals(p1, p4);
+    assertNotEquals(p3, p4);
+    assertNotEquals(p1, "(1, 2)"); //different types
+  }
+
+  @Test
+  public void test_hashCode() {
+
+    
+    Coordinate c1 = new Coordinate(1, 2);
+    Placement p1 = new Placement(c1, 'v');
+    Placement p3 = new Placement(c1, 'V');
+    assertEquals(p1.hashCode(), p3.hashCode());
+  
+    
+    Coordinate c2 = new Coordinate(1, 2);
+    Placement p2 = new Placement(c2, 'v');
+    assertEquals(p1.hashCode(), p2.hashCode());
+    
+    
+    Coordinate c3 = new Coordinate(0, 3);
+    Placement p4 = new Placement(c3, 'v');
+    
+    
+    Coordinate c4 = new Coordinate(2, 1);
+    Placement p5 = new Placement(c4, 'v');
+    
+    assertNotEquals(p1.hashCode(), p4.hashCode());
+    assertNotEquals(p1.hashCode(), p5.hashCode());
+  }
+
+
+
+  @Test
+  public void test_string_constructor_error_cases() {
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A0q"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("AAv"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("@0q"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("[0v"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("Av"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A:h"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A12"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A12v"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A0/"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A1@"));
+     
+   
+  }
+  
+  }
+
+

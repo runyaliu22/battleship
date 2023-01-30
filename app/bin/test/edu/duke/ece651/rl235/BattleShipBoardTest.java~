@@ -1,4 +1,4 @@
-package edu.duke.ece651.rl235;
+package edu.duke.adh39.battleship;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,9 +37,7 @@ public class BattleShipBoardTest {
   
   public void test_try_add(){
 
-    //Ship<Character> s1 = new BasicShip(new Coordinate("A0"));
-
-    Ship<Character> s1 = new RectangleShip<Character>(new Coordinate("A0"), 's', '*');
+    Ship<Character> s1 = new BasicShip(new Coordinate("A0"));
 
     Board<Character> b2 = new BattleShipBoard<Character> (2, 1);
     

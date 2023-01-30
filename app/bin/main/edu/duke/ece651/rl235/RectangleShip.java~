@@ -1,0 +1,36 @@
+package edu.duke.ece651.rl235;
+
+import java.util.HashSet;
+
+public class RectangleShip {
+
+  static HashSet<Coordinate> makeCoords(Coordinate upperLeft, int width, int height){//public?
+
+    HashSet<Coordinate> mySet = new HashSet<Coordinate>();
+
+    for (int i = upperLeft.getColumn(); i <= upperLeft.getColumn() + width - 1; i++){
+
+      for (int j = upperLeft.getRow(); j <= upperLeft.getRow() + height - 1; j++){
+
+        mySet.add(new Coordinate(j, i));
+        
+      }
+      
+    }
+
+    return mySet;
+
+    
+    
+  }
+
+  public RectangleShip(Coordinate upperLeft, int width, int height){
+
+    super(makeCoords(upperLeft, width, height));//add extend?
+    
+  }
+
+  
+  
+ 
+}
