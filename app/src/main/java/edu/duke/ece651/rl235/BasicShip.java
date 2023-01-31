@@ -8,9 +8,6 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   protected ShipDisplayInfo<T> myDisplayInfo;
 
- 
-
-  
 
   // private final Coordinate myLocation;
 

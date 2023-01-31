@@ -14,7 +14,7 @@ public class V1ShipFactory implements AbstractShipFactory<Character> {
     }
 
     //RectangleShip<Character> r = new RectangleShip<Character>(name, where.getCoordinate(), w, h, letter, '*');
-
+    
     Ship<Character> r = new RectangleShip<Character>(name, where.getCoordinate(), w, h, letter, '*');
     
     return r;
