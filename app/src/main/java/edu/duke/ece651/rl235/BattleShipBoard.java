@@ -12,8 +12,6 @@ public class BattleShipBoard<T> implements Board<T> {
 
   private final PlacementRuleChecker<T> placementChecker;
 
-  
-
   public int getWidth() {
     return width;
 
@@ -23,37 +21,40 @@ public class BattleShipBoard<T> implements Board<T> {
     return height;
   }
 
-
   /**
    * Constructs a BattleShipBoard with the specified width
    * and height
+   * 
    * @param w is the width of the newly constructed board.
    * @param h is the height of the newly constructed board.
-   * @throws IllegalArgumentException if the width or height are less than or equal to zero.
+   * @throws IllegalArgumentException if the width or height are less than or
+   *                                  equal to zero.
    */
 
-  public BattleShipBoard(int w, int h){
+  public BattleShipBoard(int w, int h) {
 
-    this(w, h, new InBoundsRuleChecker<T>(null));//what does null do?
+    this(w, h, new InBoundsRuleChecker<T>(new NoCollisionRuleChecker<T>(null)));// what does null do?
     // if (w <= 0){
-    //throw new IllegalArgumentException("BattleShipBoard's width must be positive but is " + w);
-    //}
-    //if (h <= 0){
-    //throw new IllegalArgumentException("BattleShipBoard's height must be positive but is " + h);
-    //}
+    // throw new IllegalArgumentException("BattleShipBoard's width must be positive
+    // but is " + w);
+    // }
+    // if (h <= 0){
+    // throw new IllegalArgumentException("BattleShipBoard's height must be positive
+    // but is " + h);
+    // }
     // this.width = w;
-    //this.myShips = new ArrayList<Ship<T>>();
-    //this.height = h;
-    
- }
+    // this.myShips = new ArrayList<Ship<T>>();
+    // this.height = h;
 
-  //public BattleShipBoard(int w, int h, InBoundsRuleChecker<T> ibrk){
-  public BattleShipBoard(int w, int h, PlacementRuleChecker<T> prc){
+  }
 
-    if (w <= 0){
+  // public BattleShipBoard(int w, int h, InBoundsRuleChecker<T> ibrk){
+  public BattleShipBoard(int w, int h, PlacementRuleChecker<T> prc) {
+
+    if (w <= 0) {
       throw new IllegalArgumentException("BattleShipBoard's width must be positive but is " + w);
     }
-    if (h <= 0){
+    if (h <= 0) {
       throw new IllegalArgumentException("BattleShipBoard's height must be positive but is " + h);
     }
     this.width = w;
@@ -61,26 +62,31 @@ public class BattleShipBoard<T> implements Board<T> {
     this.height = h;
 
     this.placementChecker = prc;
-    
-    
+
   }
 
-  public boolean tryAddShip(Ship<T> toAdd){
-    
-    myShips.add(toAdd);
-    
-    return true;
-    
+  public boolean tryAddShip(Ship<T> toAdd) {
+
+    if (placementChecker.checkPlacement(toAdd, this)) {
+      myShips.add(toAdd);
+      return true;
+    }
+
+    return false;
+
+    // myShips.add(toAdd);
+
+    //return true;
+
   }
 
   public T whatIsAt(Coordinate where) {
-    for (Ship<T> s: myShips) {
-      if (s.occupiesCoordinates(where)){//see if my coordinate where is actually a ship!
-        return s.getDisplayInfoAt(where);//!interesting!
+    for (Ship<T> s : myShips) {
+      if (s.occupiesCoordinates(where)) {// see if my coordinate where is actually a ship!
+        return s.getDisplayInfoAt(where);// !interesting!
       }
     }
     return null;
   }
-
 
 }

@@ -63,38 +63,66 @@ class AppTest {
   @Test
   void test_do_one_placement() throws IOException{
 
-    StringReader sr = new StringReader("A0v\n");
+      StringReader sr1 = new StringReader("A0v\n");
         
       ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 
       PrintStream ps = new PrintStream(bytes, true);//write printstream into bytes
 
-      Board<Character> b = new BattleShipBoard<Character>(3, 2);
+      //Board<Character> b = new BattleShipBoard<Character>(3, 2);
 
-      App app = new App(b, sr, ps);//read from stringreader and writes to printstream
+      Board<Character> b1 = new BattleShipBoard<Character>(3, 3);
+
+      //Board<Character> b2 = new BattleShipBoard<Character>(3, 2);
+
+      App app1 = new App(b1, sr1, ps);//read from stringreader and writes to printstream
+
+      //App app2 = new App(b2, sr1, ps);
 
       String prompt = "Where would you like to put your ship?";
 
-      app.doOnePlacement();
+      app1.doOnePlacement();
 
 
       //assertEquals('s', b.whatIsAt(new Coordinate("A0")));
 
-      assertEquals('d', b.whatIsAt(new Coordinate("A0")));
+      assertEquals('d', b1.whatIsAt(new Coordinate("A0")));
 
-      assertEquals(null, b.whatIsAt(new Coordinate("A1")));
+      assertEquals(null, b1.whatIsAt(new Coordinate("A1")));
 
-      assertEquals(null, b.whatIsAt(new Coordinate("A2")));
+      assertEquals(null, b1.whatIsAt(new Coordinate("A2")));
 
-       assertEquals('d', b.whatIsAt(new Coordinate("B0")));
+       assertEquals('d', b1.whatIsAt(new Coordinate("B0")));
 
-       // assertEquals('d', b.whatIsAt(new Coordinate("C0")));
-
-      
+       assertEquals('d', b1.whatIsAt(new Coordinate("C0")));
 
       bytes.reset();
+
+      StringReader sr2 = new StringReader("A0v\n");
+
+      // ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+
+      //PrintStream ps = new PrintStream(bytes, true);//write printstream into bytes
+
+      Board<Character> b2 = new BattleShipBoard<Character>(3, 2);
+
+       App app2 = new App(b2, sr2, ps);
+      
+      app2.doOnePlacement();
+
+      assertEquals(null, b2.whatIsAt(new Coordinate("A0")));
+
+      assertEquals(null, b2.whatIsAt(new Coordinate("A1")));
+
+      assertEquals(null, b2.whatIsAt(new Coordinate("A2")));
+
+       assertEquals(null, b2.whatIsAt(new Coordinate("B0")));      
+      
     
   }
+
+
+  
   
   
   @Test
