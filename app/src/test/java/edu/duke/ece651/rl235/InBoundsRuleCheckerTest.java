@@ -9,14 +9,18 @@ public class InBoundsRuleCheckerTest {
   public void test_inBounds() {
     
     //use the same board 
-    Board<Character> b = new BattleShipBoard<Character>(3, 2, null);
+    //Board<Character> b = new BattleShipBoard<Character>(3, 2, p);
 
     AbstractShipFactory<Character> f = new V1ShipFactory();
     
     //ship 1
     Ship<Character> s1 = f.makeDestroyer(new Placement("A0v"));
     
+    //InBoundsRuleChecker<Character> p = new InBoundsRuleChecker<Character>(null);
+
     PlacementRuleChecker<Character> p = new InBoundsRuleChecker<Character>(null);
+
+    Board<Character> b = new BattleShipBoard<Character>(3, 2, p);
 
     assertEquals(p.checkMyRule(s1, b), false);
 
