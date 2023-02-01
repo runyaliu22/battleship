@@ -16,6 +16,7 @@ public abstract class BasicShip<T> implements Ship<T> {
   // public BasicShip(Coordinate c){
 
   // this.myLocation = c;
+  
 
   // myPieces = new HashMap<Coordinate, Boolean>();
   // myPieces.put(c, false);
@@ -32,6 +33,14 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   }
 
+  //why no override?
+  public Iterable<Coordinate> getCoordinates(){
+
+    return myPieces.keySet();
+
+  }
+
+  
 
   protected void checkCoordinateInThisShip(Coordinate c){
     if (myPieces.get(c) == null){

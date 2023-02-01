@@ -6,6 +6,10 @@ public class Coordinate {
   private final int column;
 
   public Coordinate(int r, int c){
+
+    if (r <0 || c <0){
+      throw new IllegalArgumentException("Invalid row number or column number");//
+    }
     
     this.row = r;
     this.column = c;
@@ -22,7 +26,8 @@ public class Coordinate {
 
     char rLetter = s.charAt(0);
     int  cLetter = s.charAt(1) - '0';
-    
+
+    //needs ot be changed based on the board size?
 
     if (rLetter < 'A' || rLetter > 'Z' ){
       throw new  IllegalArgumentException("Invalid row number!");
