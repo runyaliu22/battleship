@@ -43,7 +43,7 @@ public class BattleShipBoardTest {
 
     Board<Character> b2 = new BattleShipBoard<Character> (2, 1);
     
-    assertEquals(true, b2.tryAddShip(s1));
+    assertEquals(null, b2.tryAddShip(s1));
 
     assertEquals('s', b2.whatIsAt(new Coordinate("A0")));
     assertEquals(null, b2.whatIsAt(new Coordinate("A1")));

@@ -1,9 +1,11 @@
 package edu.duke.ece651.rl235;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.StringReader;
@@ -73,13 +75,42 @@ public class TextPlayerTest {
 
         assertEquals(p, expected[i]);
 
-        assertEquals(prompt + "\n", bytes.toString());
+        assertEquals(prompt + "\n", bytes.toString());//why newline?
 
         bytes.reset();
         
       }
       
     }
+
+  @Test
+  //void test_eof() throws EOFException{
+
+ void test_eof() throws EOFException{
+
+    StringReader sr = new StringReader("");
+
+    BufferedReader br = new BufferedReader(sr);
+
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+
+    PrintStream ps = new PrintStream(bytes, true);
+
+    Board<Character> b1 = new BattleShipBoard<Character>(10, 20);
+
+    // Board<Character> b2 = new BattleShipBoard<Character>(10, 20);
+      
+     TextPlayer player1 = new TextPlayer("A", b1, br, ps, new V1ShipFactory());
+
+     //TextPlayer player2 = new TextPlayer("B", b2, br, ps, new V1ShipFactory());
+
+     //App app = new App(player1, player2);
+
+     assertThrows(EOFException.class, ()->player1.doPlacementPhase());
+     
+     
+    
+  }
 
 
 
@@ -88,7 +119,7 @@ public class TextPlayerTest {
 
     //StringReader sr1 = new StringReader("A0v\nA1v\nD1h\n");
 
-    StringReader sr1 = new StringReader("A0v\nD0h\nC3h\nF5v\nH7v\nB0v\nC1h\nR2h\nE7v\nM8v\n");
+    StringReader sr1 = new StringReader("A0v\nC1h\nG7h\nh8v\np1h\nA8h\nR1v\nI8v\nH5h\nO9v\n");
 
     //StringReader sr1 = new StringReader("A0v\nA1v\n");
 
@@ -104,9 +135,9 @@ public class TextPlayerTest {
 
       PrintStream ps = new PrintStream(bytes, true);//write printstream into bytes
 
-      Board<Character> b1 = new BattleShipBoard<Character>(3, 4);
+      Board<Character> b1 = new BattleShipBoard<Character>(10, 20);
 
-      Board<Character> b2 = new BattleShipBoard<Character>(3, 4);
+      Board<Character> b2 = new BattleShipBoard<Character>(10, 20);
       
       TextPlayer player1 = new TextPlayer("A", b1, br1, ps, new V1ShipFactory());
 
@@ -159,15 +190,23 @@ public class TextPlayerTest {
 
 
 
+
+      
+
+
       //!different oceans, different boards!
 
-      StringReader sr2 = new StringReader("A0v\nA1v\nB2V\nC8H\na4v\nC7v\nF6h\nT1h\nR4h\nD9v\n");
+      //StringReader sr2 = new StringReader("A0v\nA1v\nB2V\nC8H\na4v\nC7v\nF6h\nT1h\nR4h\nD9v\n");
+
+      StringReader sr2 = new StringReader("A0v\nC1h\nG7h\nh8v\np1h\nA8h\nR1v\nI8v\nH5h\nO9v\n");
+
+
 
        BufferedReader br3 = new BufferedReader(sr2);
       
-      Board<Character> b3 = new BattleShipBoard<Character>(3, 2);
+      Board<Character> b3 = new BattleShipBoard<Character>(10, 20);
 
-      Board<Character> b4 = new BattleShipBoard<Character>(3, 2);
+      Board<Character> b4 = new BattleShipBoard<Character>(10, 20);
 
       TextPlayer player3 = new TextPlayer("A", b3, br3, ps, new V1ShipFactory());
 
@@ -183,7 +222,7 @@ public class TextPlayerTest {
       
       assertEquals('s', b3.whatIsAt(new Coordinate("A0")));
 
-      assertEquals('s', b3.whatIsAt(new Coordinate("A1")));
+      assertEquals(null, b3.whatIsAt(new Coordinate("A1")));
 
       assertEquals(null, b3.whatIsAt(new Coordinate("A2")));
       

@@ -64,7 +64,7 @@ public class BattleShipBoard<T> implements Board<T> {
     this.placementChecker = prc;
 
   }
-
+  /*
   public boolean tryAddShip(Ship<T> toAdd) {
 
     if (placementChecker.checkPlacement(toAdd, this)) {
@@ -79,6 +79,23 @@ public class BattleShipBoard<T> implements Board<T> {
     //return true;
 
   }
+  */
+
+  public String tryAddShip(Ship<T> toAdd) {
+
+    String s = placementChecker.checkPlacement(toAdd, this);
+
+    if (s == null){
+      myShips.add(toAdd);
+      return null;
+    }
+    
+    return s;
+
+    
+  }
+
+  
 
   public T whatIsAt(Coordinate where) {
     for (Ship<T> s : myShips) {

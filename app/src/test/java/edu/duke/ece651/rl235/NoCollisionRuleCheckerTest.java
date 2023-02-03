@@ -18,14 +18,18 @@ public class NoCollisionRuleCheckerTest {
     //check ok to add s1 to an empty board
     Ship<Character> s1 = f.makeSubmarine(new Placement("A0v"));
 
-    assertEquals(p1.checkMyRule(s1, b1), true);
+    //assertEquals(p1.checkMyRule(s1, b1), true);
+
+    assertEquals(p1.checkMyRule(s1, b1), null);
     
     b1.tryAddShip(s1);
 
     //check not ok to add s2
     Ship<Character> s2 = f.makeBattleship(new Placement("B0h"));
 
-    assertEquals(p1.checkMyRule(s2, b1), false);
+    // assertEquals(p1.checkMyRule(s2, b1), false);
+
+    assertEquals(p1.checkMyRule(s2, b1), "That placement is invalid: the ship overlaps another ship.");
 
     //combine two rules
 
@@ -34,12 +38,15 @@ public class NoCollisionRuleCheckerTest {
     Board<Character> b2 = new BattleShipBoard<>(4, 3, p2);
 
 
-    assertEquals(true, p2.checkPlacement(s2, b2));
+    //assertEquals(true, p2.checkPlacement(s2, b2));
+
+    assertEquals(null, p2.checkPlacement(s2, b2));
 
     b2.tryAddShip(s2);
 
-    assertEquals(false, p2.checkPlacement(s1, b2));//need to check the ship satisfies the rules before added to the board!
-    
+    //assertEquals(false, p2.checkPlacement(s1, b2));//need to check the ship satisfies the rules before added to the board!
+
+     assertEquals("That placement is invalid: the ship overlaps another ship.", p2.checkPlacement(s1, b2));
 
     
     
