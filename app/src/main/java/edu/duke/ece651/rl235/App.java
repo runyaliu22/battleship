@@ -10,80 +10,137 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
 
+
+
 public class App {
 
-  private final AbstractShipFactory<Character> shipFactory;
+  private final TextPlayer player1;
 
-  private final Board<Character> theBoard;
+  private final TextPlayer player2;
 
-  private final BoardTextView view;
 
-  private final BufferedReader inputReader;
 
-  private final PrintStream out;
 
-  public App(Board<Character> theBoard, Reader inputSource, PrintStream out) {
 
-    // BufferedReader
 
-    //BattleShipBoard<Character>(10,20);
-    // this.theBoard = new Board(10, 20);
-
-    // this.view = new BoardTextView(theBoard);
-    // this.inputReader = new BufferedReader(new InputStreamReader(System.in));
-    // this.out = System.out;
-
-    this.shipFactory = new V1ShipFactory();//need this constructor to implement
+  public App(TextPlayer p1, TextPlayer p2){
     
-    this.theBoard = theBoard;
-
-    this.view = new BoardTextView(theBoard);
-
-    this.inputReader = new BufferedReader(inputSource);
-
-    this.out = out;//!interesting!!
+    this.player1 = p1;
+    this.player2 = p2;
+    
   }
 
-  public Placement readPlacement(String prompt) throws IOException {
+  //private final AbstractShipFactory<Character> shipFactory;
 
-    out.println(prompt);
+  // private final Board<Character> theBoard;
 
-    String s = inputReader.readLine();
+  //private final BoardTextView view;
 
-    return new Placement(s);//will throw if invalid orientation!
+  //private final BufferedReader inputReader;
 
-  }
+  //private final PrintStream out;
 
-  public void doOnePlacement() throws IOException {
+  
+  //public App(Board<Character> theBoard, Reader inputSource, PrintStream out) {
 
-    String prompt = "Where would you like to put your ship?";
 
-    Placement p = readPlacement(prompt);
+    //// BufferedReader
 
-    //Coordinate c = p.getCoordinate();
+    ////BattleShipBoard<Character>(10,20);
+    ////this.theBoard = new Board(10, 20);
 
-    //Ship  s = new BasicShip<Character>(c);
+    //// this.view = new BoardTextView(theBoard);
+    //// this.inputReader = new BufferedReader(new InputStreamReader(System.in));
+    //// this.out = System.out;
+
+    //this.shipFactory = new V1ShipFactory();//need this constructor to implement
     
-    //Ship<Character> s = new RectangleShip<Character>(c, 's', '*');
+    //this.theBoard = theBoard;
 
-    Ship<Character> s  = shipFactory.makeDestroyer(p);
+    //this.view = new BoardTextView(theBoard);
 
-    theBoard.tryAddShip(s);
+    //this.inputReader = new BufferedReader(inputSource);
+
+    //this.out = out;//!interesting!!
+  //}
+
+
+  
+  //readPlacement!
+  //public Placement readPlacement(String prompt) throws IOException {
+
+  //out.println(prompt);
+
+  //String s = inputReader.readLine();
+
+  //return new Placement(s);//will throw if invalid orientation!
+
+  //}
+
+  
+  //doOnePlacement!
+  //public void doOnePlacement() throws IOException {
+
+  //String prompt = "Where would you like to put your ship?";
+
+  //Placement p = readPlacement(prompt);
+
+    ////Coordinate c = p.getCoordinate();
+
+    ////Ship<Character>  s = new BasicShip<Character>(c);
+    
+    ////Ship<Character> s = new RectangleShip<Character>(c, 's', '*');
+
+    //Ship<Character> s  = shipFactory.makeDestroyer(p);
+
+    //theBoard.tryAddShip(s);
     //s.recordHitAt(new Coordinate("Q4"));
 
 
-    out.println(view.displayMyOwnBoard()); // meaning?print write to out
+    //out.println(view.displayMyOwnBoard()); // meaning?print write to out
+  //}
+
+
+  public void doPlacementPhase() throws IOException{
+
+    //player1.doOnePlacement();
+    player1.doPlacementPhase();
+    player2.doPlacementPhase();
+
+    
   }
   
   
-
+  
+  //independent of all classes, used for testing!
   public static void main(String[] args) throws IOException {
 
-    Board<Character> b= new BattleShipBoard<Character>(10, 20);
+    //Board<Character> b= new BattleShipBoard<Character>(10, 20);
     
-    App a = new App(b, new InputStreamReader(System.in), System.out);
+    //App a = new App(b, new InputStreamReader(System.in), System.out);
 
-    a.doOnePlacement();
+    //a.doOnePlacement();
+
+
+    Board<Character> b1 = new BattleShipBoard<>(10, 20);
+
+    Board<Character> b2 = new BattleShipBoard<>(10, 20);
+
+    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+
+    V1ShipFactory factory = new V1ShipFactory();
+
+    TextPlayer p1 = new TextPlayer("A", b1, input, System.out, factory);
+
+    TextPlayer p2 = new TextPlayer("B", b2, input, System.out, factory);
+
+    App a = new App(p1, p2);
+
+   
+    a.doPlacementPhase();//player 1 doOnePlacement!
+
+    
+    
 
   }
   
