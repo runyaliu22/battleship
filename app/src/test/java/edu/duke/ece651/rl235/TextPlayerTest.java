@@ -88,7 +88,7 @@ public class TextPlayerTest {
 
     //StringReader sr1 = new StringReader("A0v\nA1v\nD1h\n");
 
-    StringReader sr1 = new StringReader("A0v\nD0h\n");
+    StringReader sr1 = new StringReader("A0v\nD0h\nC3h\nF5v\nH7v\nB0v\nC1h\nR2h\nE7v\nM8v\n");
 
     //StringReader sr1 = new StringReader("A0v\nA1v\n");
 
@@ -138,7 +138,7 @@ public class TextPlayerTest {
       // app1.doOnePlacement();
       
 
-      assertEquals('d', b1.whatIsAt(new Coordinate("A0")));
+      assertEquals('s', b1.whatIsAt(new Coordinate("A0")));
 
       assertEquals(null, b1.whatIsAt(new Coordinate("A1")));
 
@@ -146,11 +146,12 @@ public class TextPlayerTest {
 
       assertEquals(null, b1.whatIsAt(new Coordinate("A2")));
 
-       assertEquals('d', b1.whatIsAt(new Coordinate("B0")));
+       assertEquals('s', b1.whatIsAt(new Coordinate("B0")));
 
-       assertEquals('d', b1.whatIsAt(new Coordinate("C0")));
+       assertEquals(null, b1.whatIsAt(new Coordinate("C0")));
+       
 
-       assertEquals('d', b2.whatIsAt(new Coordinate("D1")));
+       assertEquals(null, b2.whatIsAt(new Coordinate("D1")));
 
        
        
@@ -160,7 +161,7 @@ public class TextPlayerTest {
 
       //!different oceans, different boards!
 
-      StringReader sr2 = new StringReader("A0v\nA1v\n");
+      StringReader sr2 = new StringReader("A0v\nA1v\nB2V\nC8H\na4v\nC7v\nF6h\nT1h\nR4h\nD9v\n");
 
        BufferedReader br3 = new BufferedReader(sr2);
       
@@ -180,9 +181,9 @@ public class TextPlayerTest {
 
       app2.doPlacementPhase();
       
-      assertEquals(null, b3.whatIsAt(new Coordinate("A0")));
+      assertEquals('s', b3.whatIsAt(new Coordinate("A0")));
 
-      assertEquals(null, b3.whatIsAt(new Coordinate("A1")));
+      assertEquals('s', b3.whatIsAt(new Coordinate("A1")));
 
       assertEquals(null, b3.whatIsAt(new Coordinate("A2")));
       

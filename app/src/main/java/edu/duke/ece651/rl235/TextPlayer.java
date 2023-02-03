@@ -3,7 +3,10 @@ package edu.duke.ece651.rl235;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.function.Function;
 
 public class TextPlayer {
 
@@ -18,6 +21,13 @@ public class TextPlayer {
   private final PrintStream out;
 
   private final String name;
+
+
+  private final ArrayList<String> shipsToPlace = new ArrayList<>();
+
+  private final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns = new HashMap<>();
+  
+  //how to initialize these two fields in the constructor???
 
   public TextPlayer(String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out, AbstractShipFactory<Character> factory) {
 
@@ -47,13 +57,57 @@ public class TextPlayer {
    
   }
 
+  //hashmap!
+  protected void setupShipCreationMap(){
+
+    shipCreationFns.put("Submarine", p->shipFactory.makeSubmarine(p));
+
+    //shipCreationFns.put("Submarine", p->shipFactory.makeSubmarine(p));
+
+    shipCreationFns.put("Destroyer", p->shipFactory.makeDestroyer(p));
+
+    //shipCreationFns.put("Destroyer", p->shipFactory.makeDestroyer(p));
+
+    //shipCreationFns.put("Destroyer", p->shipFactory.makeDestroyer(p));
+
+    shipCreationFns.put("Battleship", p->shipFactory.makeBattleship(p));
+
+    shipCreationFns.put("Carrier", p->shipFactory.makeCarrier(p));
+
+    
+    
+
+  }
+
+  protected void setupShipCreationList(){
+
+    shipsToPlace.addAll(Collections.nCopies(2, "Submarine"));
+
+    shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
+    
+  }
+
+  
+
   public void doPlacementPhase() throws IOException{
 
     out.println(view.displayMyOwnBoard());
 
-    out.println("PlayA instructions!");
+    out.println("Play !!!  instructions!");
 
-    this.doOnePlacement();//is it right?
+    //this.doOnePlacement();//with or without this is correct!
+
+    
+    setupShipCreationMap();
+    setupShipCreationList();
+
+    for (String s: shipsToPlace){
+
+      
+      doOnePlacement(s, shipCreationFns.get(s));
+      
+      
+    }
   
 }  
 
@@ -72,7 +126,7 @@ public class TextPlayer {
   }
   
 
-  public void doOnePlacement() throws IOException {
+  public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) throws IOException {
 
     String prompt = "Player " + name + "  where do you want to place a Destroyer?";
 
@@ -84,7 +138,9 @@ public class TextPlayer {
     
     //Ship<Character> s = new RectangleShip<Character>(c, 's', '*');
 
-    Ship<Character> s  = shipFactory.makeDestroyer(p);
+    //Ship<Character> s  = shipFactory.makeDestroyer(p);
+
+    Ship<Character> s = createFn.apply(p);
 
     theBoard.tryAddShip(s);
     //s.recordHitAt(new Coordinate("Q4"));
