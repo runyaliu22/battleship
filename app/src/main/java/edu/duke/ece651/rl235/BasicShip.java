@@ -8,6 +8,8 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   protected ShipDisplayInfo<T> myDisplayInfo;
 
+  protected ShipDisplayInfo<T> enemyDisplayInfo;
+
 
   // private final Coordinate myLocation;
 
@@ -23,7 +25,9 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   // }
 
-  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo) {
+  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo, ShipDisplayInfo<T> enemyDisplayInfo) {
+
+    this.enemyDisplayInfo = enemyDisplayInfo;
     
     this.myDisplayInfo = myDisplayInfo;
 
@@ -95,12 +99,19 @@ public abstract class BasicShip<T> implements Ship<T> {
   }
 
   @Override
-  public T getDisplayInfoAt(Coordinate where) {
+  public T getDisplayInfoAt(Coordinate where, boolean myShip) {//decide whether myDisplayInfo or enemy~
 
     //return 's';
     
-    return myDisplayInfo.getInfo(wasHitAt(where));//added
+    //return myDisplayInfo.getInfo(wasHitAt(where));//added
 
+    //need to use myShip to determine what to display
+    if (myShip){
+      return myDisplayInfo.getInfo(where, wasHitAt(where));//said for future convenience
+    }
+    else{
+      return enemyDisplayInfo.getInfo(where,wasHitAt(where));
+    }
   }
 
 }

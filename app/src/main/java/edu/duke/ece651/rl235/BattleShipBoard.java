@@ -1,6 +1,7 @@
 package edu.duke.ece651.rl235;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class BattleShipBoard<T> implements Board<T> {
 
@@ -11,6 +12,10 @@ public class BattleShipBoard<T> implements Board<T> {
   private final ArrayList<Ship<T>> myShips;
 
   private final PlacementRuleChecker<T> placementChecker;
+
+  private final HashSet<Coordinate> enemyMisses;
+
+  private final T missInfo;
 
   public int getWidth() {
     return width;
@@ -31,9 +36,9 @@ public class BattleShipBoard<T> implements Board<T> {
    *                                  equal to zero.
    */
 
-  public BattleShipBoard(int w, int h) {
+  public BattleShipBoard(int w, int h, T missinfo) {
 
-    this(w, h, new InBoundsRuleChecker<T>(new NoCollisionRuleChecker<T>(null)));// what does null do?
+    this(w, h, new InBoundsRuleChecker<T>(new NoCollisionRuleChecker<T>(null)), missinfo);// what does null do?
     // if (w <= 0){
     // throw new IllegalArgumentException("BattleShipBoard's width must be positive
     // but is " + w);
@@ -49,7 +54,7 @@ public class BattleShipBoard<T> implements Board<T> {
   }
 
   // public BattleShipBoard(int w, int h, InBoundsRuleChecker<T> ibrk){
-  public BattleShipBoard(int w, int h, PlacementRuleChecker<T> prc) {
+  public BattleShipBoard(int w, int h, PlacementRuleChecker<T> prc, T missinfo) {
 
     if (w <= 0) {
       throw new IllegalArgumentException("BattleShipBoard's width must be positive but is " + w);
@@ -57,10 +62,15 @@ public class BattleShipBoard<T> implements Board<T> {
     if (h <= 0) {
       throw new IllegalArgumentException("BattleShipBoard's height must be positive but is " + h);
     }
+    
     this.width = w;
-    this.myShips = new ArrayList<Ship<T>>();
     this.height = h;
 
+    this.myShips = new ArrayList<Ship<T>>();
+    this.enemyMisses = new HashSet<>();
+
+    this.missInfo = missinfo;
+    
     this.placementChecker = prc;
 
   }
@@ -81,6 +91,24 @@ public class BattleShipBoard<T> implements Board<T> {
   }
   */
 
+  public Ship<T> fireAt(Coordinate c){
+
+    for (Ship<T>s: myShips){
+
+      if (s.occupiesCoordinates(c)){
+        s.recordHitAt(c);
+        return s;
+      }
+      
+    }
+
+    enemyMisses.add(c);
+    return null;
+    
+    
+
+  }
+
   public String tryAddShip(Ship<T> toAdd) {
 
     String s = placementChecker.checkPlacement(toAdd, this);
@@ -97,13 +125,40 @@ public class BattleShipBoard<T> implements Board<T> {
 
   
 
-  public T whatIsAt(Coordinate where) {
-    for (Ship<T> s : myShips) {
-      if (s.occupiesCoordinates(where)) {// see if my coordinate where is actually a ship!
-        return s.getDisplayInfoAt(where);// !interesting!
-      }
-    }
-    return null;
+  public T whatIsAtForSelf(Coordinate where) {
+    //for (Ship<T> s : myShips) {
+    //if (s.occupiesCoordinates(where)) {// see if my coordinate where is actually a ship!
+    //  return s.getDisplayInfoAt(where);// !interesting!
+    //}
+    //}
+    //return null;
+
+    return whatIsAt(where, true);
   }
 
+  public T whatIsAtForEnemy(Coordinate where) {
+    
+    return whatIsAt(where, false);
+  }
+
+
+  protected T whatIsAt(Coordinate where, boolean isSelf){
+    //should determine if it's isSelf or not
+    for (Ship<T> s : myShips) {
+      if (s.occupiesCoordinates(where)) {// see if my coordinate where is actually a part of ship
+        return s.getDisplayInfoAt(where, isSelf);// !interesting! if so, s/d/b/c is not hit, * if hit!
+      }
+    }
+
+    if (!isSelf && enemyMisses.contains(where)){
+      return missInfo;
+    }
+    return null;//blank space
+
+
+  }
+
+
+
+  
 }

@@ -4,7 +4,7 @@ public interface ShipDisplayInfo<T> {
 
   //public T getInfo(Coordinate where, boolean hit);
 
-  public T getInfo( boolean hit);
+  public T getInfo( Coordinate where, boolean hit);
   
   
 

@@ -159,7 +159,6 @@ public class TextPlayer {
     }
 
     return p;
-
  
   }
 

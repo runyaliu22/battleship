@@ -11,7 +11,7 @@ public class NoCollisionRuleCheckerTest {
     //next rule is null
     PlacementRuleChecker<Character> p1 = new NoCollisionRuleChecker<>(null);
     
-    Board<Character> b1 = new BattleShipBoard<>(4, 3, p1);//it seems p doesn't get used in battlefile program
+    Board<Character> b1 = new BattleShipBoard<>(4, 3, p1, 'X');//it seems p doesn't get used in battlefile program
 
     AbstractShipFactory<Character> f =  new V1ShipFactory();//ASF doens't have constructor because it's only implemented
 
@@ -34,8 +34,8 @@ public class NoCollisionRuleCheckerTest {
     //combine two rules
 
     PlacementRuleChecker<Character> p2 = new InBoundsRuleChecker<>(p1);
+    Board<Character> b2 = new BattleShipBoard<>(4, 3, p2, 'X');
 
-    Board<Character> b2 = new BattleShipBoard<>(4, 3, p2);
 
 
     //assertEquals(true, p2.checkPlacement(s2, b2));

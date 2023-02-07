@@ -29,7 +29,7 @@ public class RectangleShipTest {
   public void test_constructor(){
 
     RectangleShip<Character> s = new RectangleShip<Character>(new Coordinate("A2"), 's', '*');
-    Character c = s.getDisplayInfoAt(new Coordinate("A2"));//false hit
+    Character c = s.getDisplayInfoAt(new Coordinate("A2"), true);//false hit
     assertEquals(c, 's');
 
     assertEquals(s.getName(), "testship");
@@ -101,15 +101,15 @@ public class RectangleShipTest {
 
     s1.recordHitAt(c1);
 
-    assertEquals('*', s1.getDisplayInfoAt(c1));
+    assertEquals('*', s1.getDisplayInfoAt(c1, true));
 
-    assertEquals('s', s1.getDisplayInfoAt(c2));
+    assertEquals('s', s1.getDisplayInfoAt(c2, true));
 
     s1.recordHitAt(c2);
 
-     assertEquals('*', s1.getDisplayInfoAt(c2));
+    assertEquals('*', s1.getDisplayInfoAt(c2, true));
 
-      assertEquals('s', s1.getDisplayInfoAt(c3));
+    assertEquals('s', s1.getDisplayInfoAt(c3, true));
 
 
      

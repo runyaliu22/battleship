@@ -1,5 +1,7 @@
 package edu.duke.ece651.rl235;
 
+import java.util.function.Function;
+
 /**
  * This class handles textual display of
  * a Board (i.e., converting it to a string to show
@@ -48,8 +50,18 @@ public class BoardTextView {
     ans.append("\n");
     return ans.toString();
   }
+  // getSquareFn.apply
 
   public String displayMyOwnBoard() {
+    return displayAnyBoard((c) -> toDisplay.whatIsAtForSelf(c));
+  }
+
+  public String displayEnemyBoard() {
+    return displayAnyBoard((c) -> toDisplay.whatIsAtForEnemy(c));
+  }
+
+  protected String displayAnyBoard(Function<Coordinate, Character> getSquareFn) {
+    // public String displayMyOwnBoard() {
 
     StringBuilder ans = new StringBuilder("");
     String sep = "  |";
@@ -62,32 +74,38 @@ public class BoardTextView {
 
       for (int column = 0; column < toDisplay.getWidth() - 1; column++) {
 
-        if (toDisplay.whatIsAt(new Coordinate(row, column)) == null) {
+        // if (toDisplay.whatIsAtForSelf(new Coordinate(row, column)) == null) {
+
+        if (getSquareFn.apply(new Coordinate(row, column)) == null) {
 
           ans.append(sep);
-          
+
         }
 
         else {
-          
-          ans.append(toDisplay.whatIsAt(new Coordinate(row, column)));
-          
+
+          // ans.append(toDisplay.whatIsAtForSelf(new Coordinate(row, column)));
+
+          ans.append(getSquareFn.apply(new Coordinate(row, column)));
+
           ans.append("|");
 
         }
       }
 
-      Character temp = toDisplay.whatIsAt(new Coordinate(row, toDisplay.getWidth()-1));
+      // Character temp = toDisplay.whatIsAtForSelf(new Coordinate(row,
+      // toDisplay.getWidth()-1));
 
-      if (temp == null){
+      Character temp = getSquareFn.apply(new Coordinate(row, toDisplay.getWidth() - 1));
+
+      if (temp == null) {
 
         ans.append("  " + letter + '\n');
-        
-      }
-      else{
-        
-        ans.append("" + temp + " "+ letter + '\n');
-        
+
+      } else {
+
+        ans.append("" + temp + " " + letter + '\n');
+
       }
     }
 

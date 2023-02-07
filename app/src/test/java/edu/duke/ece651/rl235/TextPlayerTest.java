@@ -1,6 +1,7 @@
 package edu.duke.ece651.rl235;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
@@ -17,7 +18,7 @@ public class TextPlayerTest {
   private TextPlayer createTextPlayer1(int w, int h, String inputData, ByteArrayOutputStream bytes) {
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
-    Board<Character> board = new BattleShipBoard<Character>(w, h);
+    Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
     V1ShipFactory shipFactory = new V1ShipFactory();
     return new TextPlayer("A", board, input, output, shipFactory);
   }
@@ -86,7 +87,8 @@ public class TextPlayerTest {
   @Test
   //void test_eof() throws EOFException{
 
- void test_eof() throws EOFException{
+  //void test_eof() throws EOFException{
+ void test_eof() {
 
     StringReader sr = new StringReader("");
 
@@ -96,7 +98,7 @@ public class TextPlayerTest {
 
     PrintStream ps = new PrintStream(bytes, true);
 
-    Board<Character> b1 = new BattleShipBoard<Character>(10, 20);
+    Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
 
     // Board<Character> b2 = new BattleShipBoard<Character>(10, 20);
       
@@ -135,9 +137,9 @@ public class TextPlayerTest {
 
       PrintStream ps = new PrintStream(bytes, true);//write printstream into bytes
 
-      Board<Character> b1 = new BattleShipBoard<Character>(10, 20);
+      Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
 
-      Board<Character> b2 = new BattleShipBoard<Character>(10, 20);
+      Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
       
       TextPlayer player1 = new TextPlayer("A", b1, br1, ps, new V1ShipFactory());
 
@@ -169,20 +171,20 @@ public class TextPlayerTest {
       // app1.doOnePlacement();
       
 
-      assertEquals('s', b1.whatIsAt(new Coordinate("A0")));
+      assertEquals('s', b1.whatIsAtForSelf(new Coordinate("A0")));
 
-      assertEquals(null, b1.whatIsAt(new Coordinate("A1")));
+      assertEquals(null, b1.whatIsAtForSelf(new Coordinate("A1")));
 
       //assertEquals('d', b1.whatIsAt(new Coordinate("A1")));
 
-      assertEquals(null, b1.whatIsAt(new Coordinate("A2")));
+      assertEquals(null, b1.whatIsAtForSelf(new Coordinate("A2")));
 
-       assertEquals('s', b1.whatIsAt(new Coordinate("B0")));
+       assertEquals('s', b1.whatIsAtForSelf(new Coordinate("B0")));
 
-       assertEquals(null, b1.whatIsAt(new Coordinate("C0")));
+       assertEquals(null, b1.whatIsAtForSelf(new Coordinate("C0")));
        
 
-       assertEquals(null, b2.whatIsAt(new Coordinate("D1")));
+       assertEquals(null, b2.whatIsAtForSelf(new Coordinate("D1")));
 
        
        
@@ -204,9 +206,9 @@ public class TextPlayerTest {
 
        BufferedReader br3 = new BufferedReader(sr2);
       
-      Board<Character> b3 = new BattleShipBoard<Character>(10, 20);
+      Board<Character> b3 = new BattleShipBoard<Character>(10, 20, 'X');
 
-      Board<Character> b4 = new BattleShipBoard<Character>(10, 20);
+      Board<Character> b4 = new BattleShipBoard<Character>(10, 20, 'X');
 
       TextPlayer player3 = new TextPlayer("A", b3, br3, ps, new V1ShipFactory());
 
@@ -220,14 +222,19 @@ public class TextPlayerTest {
 
       app2.doPlacementPhase();
       
-      assertEquals('s', b3.whatIsAt(new Coordinate("A0")));
+      
+      assertEquals('s', b3.whatIsAtForSelf(new Coordinate("A0")));
 
-      assertEquals(null, b3.whatIsAt(new Coordinate("A1")));
+      assertEquals(null, b3.whatIsAtForSelf(new Coordinate("A1")));
 
-      assertEquals(null, b3.whatIsAt(new Coordinate("A2")));
+      assertEquals(null, b3.whatIsAtForSelf(new Coordinate("A2")));
       
 
-      assertEquals(null, b4.whatIsAt(new Coordinate("B0")));  
+      assertEquals(null, b4.whatIsAtForSelf(new Coordinate("B0")));
+
+      //Ship<Character> s = b3.fireAt(new Coordinate("B0"));
+
+      //assertSame(s, ));
 
 
       

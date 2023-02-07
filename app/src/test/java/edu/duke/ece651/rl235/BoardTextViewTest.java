@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class BoardTextViewTest {
   @Test
   public void test_display_empty_2by2() {
-    Board<Character> b1 = new BattleShipBoard<Character>(2, 2);
+    Board<Character> b1 = new BattleShipBoard<Character>(2, 2, 'X');
     BoardTextView view = new BoardTextView(b1);
 
 
@@ -27,7 +27,7 @@ public class BoardTextViewTest {
 
   @Test
   public void test_display_empty_3by2(){
-     Board<Character> b2 = new BattleShipBoard<Character>(3, 2);
+     Board<Character> b2 = new BattleShipBoard<Character>(3, 2, 'X');
      BoardTextView view = new BoardTextView(b2);
 
     String expectedHeader= "  0|1|2\n";
@@ -42,7 +42,7 @@ public class BoardTextViewTest {
 
   @Test
   public void test_display_empty_3by5(){
-     Board<Character> b3 = new BattleShipBoard<Character>(3, 5);
+     Board<Character> b3 = new BattleShipBoard<Character>(3, 5, 'X');
      BoardTextView view = new BoardTextView(b3);
 
     String expectedHeader= "  0|1|2\n";
@@ -67,8 +67,8 @@ public class BoardTextViewTest {
 
   @Test
   public void test_invalid_board_size() {
-    Board<Character> wideBoard = new BattleShipBoard<Character>(11,20);
-    Board<Character> tallBoard = new BattleShipBoard<Character>(10,27);
+    Board<Character> wideBoard = new BattleShipBoard<Character>(11, 20, 'X');
+    Board<Character> tallBoard = new BattleShipBoard<Character>(10, 27, 'X');
     //you should write two assertThrows here
     assertThrows(IllegalArgumentException.class, () -> new BoardTextView(wideBoard));
     assertThrows(IllegalArgumentException.class, () -> new BoardTextView(tallBoard));
@@ -81,7 +81,7 @@ public class BoardTextViewTest {
 
     String expectedHeader= "  0|1|2\n";
     
-    Board<Character> b1 = new BattleShipBoard<Character>(3, 2);
+    Board<Character> b1 = new BattleShipBoard<Character>(3, 2, 'X');
     
     //Ship<Character> s1 = new BasicShip(new Coordinate("A1"));
 

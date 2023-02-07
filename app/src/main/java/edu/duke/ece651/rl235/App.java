@@ -122,9 +122,9 @@ public class App {
     //a.doOnePlacement();
 
 
-    Board<Character> b1 = new BattleShipBoard<>(10, 20);
+    Board<Character> b1 = new BattleShipBoard<>(10, 20, 'X');
 
-    Board<Character> b2 = new BattleShipBoard<>(10, 20);
+    Board<Character> b2 = new BattleShipBoard<>(10, 20, 'X');
 
     BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
