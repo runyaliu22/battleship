@@ -64,13 +64,13 @@ public class BoardTextView {
     // public String displayMyOwnBoard() {
 
     StringBuilder ans = new StringBuilder("");
-    String sep = "  |";
+    String sep = " |";
 
     ans.append(makeHeader());
 
     for (int row = 0; row < toDisplay.getHeight(); row++) {
       char letter = (char) (row + 65);
-      ans.append(letter);
+      ans.append(letter + " ");
 
       for (int column = 0; column < toDisplay.getWidth() - 1; column++) {
 
@@ -86,7 +86,7 @@ public class BoardTextView {
 
           // ans.append(toDisplay.whatIsAtForSelf(new Coordinate(row, column)));
 
-          ans.append(getSquareFn.apply(new Coordinate(row, column)));//need to add a space to be consistent with the end!
+          ans.append(getSquareFn.apply(new Coordinate(row, column)));//need to add a space to be consistent with the end!//remember to display some info before play as well!
 
           ans.append("|");
 
@@ -112,6 +112,55 @@ public class BoardTextView {
     ans.append(makeHeader());
 
     return ans.toString(); // this is a placeholder for the moment
+  }
+
+
+  public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String myHeader, String enemyHeader) {
+    String[] myBoard = displayMyOwnBoard().split("\n");
+    
+    String[] enemyBoard = enemyView.displayEnemyBoard().split("\n");
+    
+    StringBuilder both = new StringBuilder();
+    
+    StringBuilder header = new StringBuilder();
+
+    header.append("     ");
+
+    header.append(myHeader);
+
+    int w = toDisplay.getWidth();
+
+    int space1 = 2*w + 17 - myHeader.length();
+
+    for (int i = 0; i < space1; i++){
+      header.append(" ");
+    }
+
+    header.append(enemyHeader + '\n');
+
+    both.append(header);
+
+    for (int i = 0; i < toDisplay.getHeight() + 2; i++){
+
+      StringBuilder line = new StringBuilder();
+      line.append(myBoard[i]);
+
+      int space2 = 16;
+
+      for (int j = 0; j < space2; j++){
+        line.append(" ");
+      }
+
+      line.append(enemyBoard[i] + '\n');
+      
+      both.append(line);
+      
+      
+    }
+
+    return both.toString();
+
+
   }
 
 }
