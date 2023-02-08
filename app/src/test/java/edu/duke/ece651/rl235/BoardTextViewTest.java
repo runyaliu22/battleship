@@ -112,6 +112,45 @@ public class BoardTextViewTest {
     
     
     
+  }
+
+  @Test
+  public void test_enemy_board(){
+
+    Board<Character> b = new BattleShipBoard<Character>(4, 3,  'X');
+
+    BoardTextView v = new BoardTextView(b);
+
+    AbstractShipFactory<Character> f = new V1ShipFactory();
+
+    Ship<Character> s1 = f.makeSubmarine(new Placement("A0v"));
+
+    Ship<Character> s2 = f.makeDestroyer(new Placement("A3v"));
+      
+    b.tryAddShip(s1);
+
+    b.tryAddShip(s2);
+
+    b.fireAt(new Coordinate("A0"));
+
+    b.fireAt(new Coordinate("B1"));
+
+    b.fireAt(new Coordinate("A3"));
+
+    b.fireAt(new Coordinate("B3"));
+
+    b.fireAt(new Coordinate("C3"));
+
+    String expected =
+      "  0|1|2|3\n" +
+      "As|  |  |d A\n" +
+      "B  |X|  |d B\n" +
+      "C  |  |  |d C\n" +
+      "  0|1|2|3\n";
+
+    assertEquals(expected, v.displayEnemyBoard());
+    
+    //System.out.println(v.displayEnemyBoard());
     
     
   }

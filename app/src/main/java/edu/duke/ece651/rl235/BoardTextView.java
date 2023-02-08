@@ -86,7 +86,7 @@ public class BoardTextView {
 
           // ans.append(toDisplay.whatIsAtForSelf(new Coordinate(row, column)));
 
-          ans.append(getSquareFn.apply(new Coordinate(row, column)));
+          ans.append(getSquareFn.apply(new Coordinate(row, column)));//need to add a space to be consistent with the end!
 
           ans.append("|");
 

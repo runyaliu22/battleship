@@ -191,7 +191,7 @@ public class TextPlayer {
 
       out.println(m);
       Placement p1 = readPlacement(prompt);
-      Ship<Character> s1 = createFn.apply(p1);
+      Ship<Character> s1 = createFn.apply(p1);//interesting
       m = theBoard.tryAddShip(s1);
       
       
