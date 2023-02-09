@@ -140,7 +140,7 @@ public class BoardTextView {
 
     both.append(header);
 
-    for (int i = 0; i < toDisplay.getHeight() + 2; i++){
+    for (int i = 0; i < toDisplay.getHeight() + 2; i++){//2 on header
 
       StringBuilder line = new StringBuilder();
       line.append(myBoard[i]);

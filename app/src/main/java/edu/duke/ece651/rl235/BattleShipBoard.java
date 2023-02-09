@@ -91,7 +91,20 @@ public class BattleShipBoard<T> implements Board<T> {
   }
   */
 
-  public Ship<T> fireAt(Coordinate c){
+  public boolean check_lost(){
+
+    for (Ship<T> ship: myShips){
+
+      if (!ship.isSunk()){
+        return false;
+      }
+    }
+    
+    return true;
+
+  }
+  
+  public Ship<T> fireAt(Coordinate c){//actually is fired at!
 
     for (Ship<T>s: myShips){
 

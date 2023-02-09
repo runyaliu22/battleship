@@ -125,13 +125,58 @@ public class BattleShipBoardTest {
      assertEquals(b4.whatIsAtForEnemy(new Coordinate("C0")), 'X');
 
     
+  }
+
+  @Test
+
+  public void test_check_lost(){
+
+    Board<Character> b5 = new BattleShipBoard<Character>(4, 3,  'X');
+
+    AbstractShipFactory<Character> f = new V1ShipFactory();
+
+    Ship<Character> s1 = f.makeSubmarine(new Placement("A0v"));
+
+    Ship<Character> s2 = f.makeDestroyer(new Placement("C1h"));
+
+    b5.tryAddShip(s1);
+
+    //b5.tryAddShip(s2);
+
+    b5.fireAt(new Coordinate("A0"));
+
+    b5.fireAt(new Coordinate("B0"));
+
+    assertEquals(true, b5.check_lost());
+
+    b5.tryAddShip(s2);
+
+    assertEquals(false, b5.check_lost());
+
+    b5.fireAt(new Coordinate("C1"));
+
+    assertEquals(false, b5.check_lost());
+
+    b5.fireAt(new Coordinate("C2"));
+
+    assertEquals(false, b5.check_lost());
+
+    b5.fireAt(new Coordinate("C3"));
+
+    assertEquals(true, b5.check_lost());
+
+    
+
+    
+
+    
 
     
     
- 
 
     
 
+    
     
 
   }
