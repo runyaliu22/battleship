@@ -47,11 +47,10 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 
 Player A  where do you want to place a Destroyer?
-Invalid orientation!
   0|1|2|3|4|5|6|7|8|9
 A s| | | | | | | | |  A
-B s|s|s| | | | | | |  B
-C  | | | | | | | | |  C
+B s| | | | | | | | |  B
+C  |s|s| | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
@@ -72,23 +71,20 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 
 Player A  where do you want to place a Destroyer?
-Invalid orientation!
-That placement is invalid: the ship goes off the right of the board.
-Player A  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
 A s| | | | | | | | |  A
-B s|s|s| | | | | | |  B
-C  | | | | | | | | |  C
+B s| | | | | | | | |  B
+C  |s|s| | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
-H  | | | | | | | | |  H
-I  | | | | | | | | |  I
-J  | | | | | | | | |  J
+H  | | | | | | | | |d H
+I  | | | | | | | | |d I
+J  | | | | | | | | |d J
 K  | | | | | | | | |  K
 L  | | | | | | | | |  L
-M  | | | | | |d|d|d|  M
+M  | | | | | | | | |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
@@ -101,18 +97,18 @@ T  | | | | | | | | |  T
 Player A  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
 A s| | | | | | | | |  A
-B s|s|s| | | | | | |  B
-C  | | | | | | | | |  C
+B s| | | | | | | | |  B
+C  |s|s| | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
-H  | | | | | | | |d|  H
-I  | | | | | | | |d|  I
-J  | | | | | | | |d|  J
+H  | | | | | | | | |d H
+I  | | | | | | | | |d I
+J  | | | | | | | | |d J
 K  | | | | | | | | |  K
 L  | | | | | | | | |  L
-M  | | | | | |d|d|d|  M
+M  | | | | |d|d|d| |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
@@ -125,25 +121,25 @@ T  | | | | | | | | |  T
 Player A  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
 A s| | | | | | | | |  A
-B s|s|s| | | | | | |  B
-C  | | | | | | | | |  C
+B s| | | | | | | | |  B
+C  |s|s| | | | | | |  C
 D  | | | | | | | | |  D
-E  | | | | |d| | | |  E
-F  | | | | |d| | | |  F
-G  | | | | |d| | | |  G
-H  | | | | | | | |d|  H
-I  | | | | | | | |d|  I
-J  | | | | | | | |d|  J
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |d H
+I  | | | | | | | | |d I
+J  | | | | | | | | |d J
 K  | | | | | | | | |  K
 L  | | | | | | | | |  L
-M  | | | | | |d|d|d|  M
+M  | | | | |d|d|d| |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q
 R  | | | | | | | | |  R
 S  | | | | | | | | |  S
-T  | | | | | | | | |  T
+T  |d|d|d| | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 
   0|1|2|3|4|5|6|7|8|9
@@ -172,8 +168,8 @@ T  | | | | | | | | |  T
 Play !!!  instructions!
 Player B  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
+A  | | | | | | | | |  A
+B s|s| | | | | | | |  B
 C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
@@ -196,14 +192,14 @@ T  | | | | | | | | |  T
 
 Player B  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C s|s| | | | | | | |  C
+A  | | | | | | | | |  A
+B s|s| | | | | | | |  B
+C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
-H  | | | | | | | | |  H
+H  | | | | |s|s| | |  H
 I  | | | | | | | | |  I
 J  | | | | | | | | |  J
 K  | | | | | | | | |  K
@@ -220,19 +216,19 @@ T  | | | | | | | | |  T
 
 Player B  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C s|s| | | | | | | |  C
+A  | | | | | | | | |  A
+B s|s| | | | | | | |  B
+C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
-H  | | | | | | | | |  H
+H  | | | | |s|s| | |  H
 I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K  | | | | | | | | |  K
-L d|d|d| | | | | | |  L
-M  | | | | | | | | |  M
+K  |d| | | | | | | |  K
+L  |d| | | | | | | |  L
+M  |d| | | | | | | |  M
 N  | | | | | | | | |  N
 O  | | | | | | | | |  O
 P  | | | | | | | | |  P
@@ -243,52 +239,100 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 
 Player B  where do you want to place a Destroyer?
-That placement is invalid: the ship goes off the bottom of the board.
-Player B  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C s|s| | | | | | | |  C
+A  | | | | | | | | |  A
+B s|s| | | | | | | |  B
+C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
 G  | | | | | | | | |  G
-H  | | | | | | | | |  H
+H  | | | | |s|s| | |  H
 I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K  | | | | | | | | |  K
-L d|d|d| | | | | | |  L
-M  | | | | | | | | |  M
+K  |d| | | | | | | |  K
+L  |d| | | | | | | |  L
+M  |d| | | | | | | |  M
 N  | | | | | | | | |  N
-O  | | | | | | | | |  O
-P  | | | | | | | | |  P
-Q d| | | | | | | | |  Q
-R d| | | | | | | | |  R
-S d| | | | | | | | |  S
+O  | | | | | | | | |d O
+P  | | | | | | | | |d P
+Q  | | | | | | | | |d Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
 
 Player B  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9
-A s| | | | | | | | |  A
-B s| | | | | | | | |  B
-C s|s| | | | | | | |  C
+A  | | | | | | | | |  A
+B s|s| | | | | | | |  B
+C  | | |d|d|d| | | |  C
 D  | | | | | | | | |  D
-E  | | | | | | | | |d E
-F  | | | | | | | | |d F
-G  | | | | | | | | |d G
-H  | | | | | | | | |  H
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | |s|s| | |  H
 I  | | | | | | | | |  I
 J  | | | | | | | | |  J
-K  | | | | | | | | |  K
-L d|d|d| | | | | | |  L
-M  | | | | | | | | |  M
+K  |d| | | | | | | |  K
+L  |d| | | | | | | |  L
+M  |d| | | | | | | |  M
 N  | | | | | | | | |  N
-O  | | | | | | | | |  O
-P  | | | | | | | | |  P
-Q d| | | | | | | | |  Q
-R d| | | | | | | | |  R
-S d| | | | | | | | |  S
+O  | | | | | | | | |d O
+P  | | | | | | | | |d P
+Q  | | | | | | | | |d Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
+
+Player B's turn:
+
+Player A's turn:
 

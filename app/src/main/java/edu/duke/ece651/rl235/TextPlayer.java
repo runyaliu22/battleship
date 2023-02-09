@@ -62,6 +62,46 @@ public class TextPlayer {
     //for (Ship<Character> ship: theBoard.)
 
       //}
+  public String getName(){
+    return name;
+  }
+
+  public String playOneTurn(Board<Character> enBoard) throws IOException{
+
+    out.println("Player " + name + "'s turn:\n");
+
+    String s = inputReader.readLine();
+
+    Coordinate c = new Coordinate(s);//need to take care of error handling!
+
+    enBoard.fireAt(c);
+
+    if (enBoard.whatIsAtForEnemy(c) == 's'){
+      
+      return "You hit a submarine!\n";
+      
+    }
+
+   if (enBoard.whatIsAtForEnemy(c) == 'd'){
+     
+      return "You hit a destroyer!\n";
+    }
+
+   if (enBoard.whatIsAtForEnemy(c) == 'b'){//tested in main later!
+     
+      return "You hit a battleship!\n";
+    }
+
+   if (enBoard.whatIsAtForEnemy(c) == 'c'){
+     
+      return "You hit a carrier!\n";
+    }
+   
+    return "You missed!\n";
+    
+  }
+
+    
 
   // hashmap!
   protected void setupShipCreationMap() {
@@ -82,7 +122,7 @@ public class TextPlayer {
 
   }
 
-  protected void setupShipCreationList() {
+  protected void setupShipCreationList() {//need to be changed for more testing!
 
     shipsToPlace.addAll(Collections.nCopies(2, "Submarine"));
 

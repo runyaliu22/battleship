@@ -109,6 +109,38 @@ public class App {
 
     
   }
+
+  public String doAttackingPhase(Board<Character> p1Board, Board<Character> p2Board) throws IOException{
+
+    TextPlayer currentPlayer = player1;
+    TextPlayer otherPlayer = player2;
+    
+    Board<Character> currentBoard = p1Board;
+    Board<Character> otherBoard = p2Board;
+
+    
+    while (true) {
+      currentPlayer.playOneTurn(otherBoard); 
+      if (otherBoard.check_lost()) {
+        
+        return "Player " + currentPlayer.getName() + " wins!";
+      }
+   //swap current and other player for next time around loop
+   TextPlayer temp1 = currentPlayer;
+   currentPlayer = otherPlayer;
+   otherPlayer = temp1;
+
+   
+   Board<Character> temp2 = otherBoard;
+   otherBoard = currentBoard;
+   currentBoard = temp2;
+   
+    }
+
+
+  }
+
+  
   
   
   
@@ -137,7 +169,11 @@ public class App {
     App a = new App(p1, p2);
 
    
-    a.doPlacementPhase();//player 1 doOnePlacement!
+    a.doPlacementPhase();//player 1&2 doOnePlacement!
+
+    a.doAttackingPhase(b1, b2);
+
+    
 
     
     

@@ -136,7 +136,10 @@ public class BoardTextView {
       header.append(" ");
     }
 
-    header.append(enemyHeader + '\n');
+    //header.append(enemyHeader + '\n');
+
+     header.append(enemyHeader);
+     header.append('\n');
 
     both.append(header);
 

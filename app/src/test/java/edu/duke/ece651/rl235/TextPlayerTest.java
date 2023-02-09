@@ -121,7 +121,9 @@ public class TextPlayerTest {
 
     //StringReader sr1 = new StringReader("A0v\nA1v\nD1h\n");
 
-    StringReader sr1 = new StringReader("A0v\nC1h\nG7h\nh8v\np1h\nA8h\nR1v\nI8v\nH5h\nO9v\n");
+    //StringReader sr1 = new StringReader("A0v\nC1h\nG7h\nh8v\np1h\nA8h\nR1v\nI8v\nH5h\nO9v\n");
+
+    StringReader sr1 = new StringReader("A0v\nC1h\nG7h\nh8v\np1h\nA8h\nR1v\nI8v\nH5h\nO9v\nA8\nH5\nA0");
 
     //StringReader sr1 = new StringReader("A0v\nA1v\n");
 
@@ -155,6 +157,15 @@ public class TextPlayerTest {
 
        app1.doPlacementPhase();
 
+      
+
+       assertEquals("You hit a submarine!\n", player1.playOneTurn(b2));
+
+       assertEquals("You hit a destroyer!\n", player1.playOneTurn(b2));
+
+       assertEquals("You missed!\n", player1.playOneTurn(b2));
+         
+       
        String prompt = "Player  where do you want to place a Destroyer?";//what does it do?
 
        //app1.doPlacementPhase();
@@ -194,7 +205,7 @@ public class TextPlayerTest {
 
 
       
-
+      /*
 
       //!different oceans, different boards!
 
@@ -236,7 +247,9 @@ public class TextPlayerTest {
 
       //assertSame(s, ));
 
+      */
 
+      
       
   }
 
