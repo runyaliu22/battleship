@@ -14,7 +14,7 @@ public class BoardTextViewTest {
     BoardTextView view = new BoardTextView(b1);
 
 
-    String expectedHeader= "  0|1\n";
+    String expectedHeader= "  0|1  \n";
     assertEquals(expectedHeader, view.makeHeader());
     String expected =
       expectedHeader+
@@ -30,7 +30,7 @@ public class BoardTextViewTest {
      Board<Character> b2 = new BattleShipBoard<Character>(3, 2, 'X');
      BoardTextView view = new BoardTextView(b2);
 
-    String expectedHeader= "  0|1|2\n";
+    String expectedHeader= "  0|1|2  \n";
     assertEquals(expectedHeader, view.makeHeader());
     String expected =
       expectedHeader+
@@ -45,7 +45,7 @@ public class BoardTextViewTest {
       Board<Character> b3 = new BattleShipBoard<Character>(3, 5, 'X');
       BoardTextView view = new BoardTextView(b3);
 
-     String expectedHeader= "  0|1|2\n";
+     String expectedHeader= "  0|1|2  \n";
      assertEquals(expectedHeader, view.makeHeader());
      String expected =
        expectedHeader+
@@ -80,10 +80,12 @@ public class BoardTextViewTest {
    @Test
    public void test_add_ship_to_board(){
 
-     String expectedHeader= "  0|1|2\n";
+     String expectedHeader= "  0|1|2  \n";
     
      Board<Character> b1 = new BattleShipBoard<Character>(3, 2, 'X');
-    
+
+     BoardTextView view = new BoardTextView(b1);
+     
      //Ship<Character> s1 = new BasicShip(new Coordinate("A1"));
 
      Ship<Character> s1 = new RectangleShip<Character>(new Coordinate("A1"), 's', '*');
@@ -97,18 +99,37 @@ public class BoardTextViewTest {
     
     
      b1.tryAddShip(s1);
-     b1.tryAddShip(s2);
+     //b1.tryAddShip(s2);
     
     
-     BoardTextView view = new BoardTextView(b1);
+     //BoardTextView view = new BoardTextView(b1);
 
+     /*
      String expected =
        expectedHeader +
       "A  |s|  A\n" +
        "B  | |s B\n" +
        expectedHeader;
+*/
+     
+     String expected1 =
+       expectedHeader +
+      "A  |s|  A\n" +
+       "B  | |  B\n" +
+       expectedHeader;
+     
 
-     assertEquals(expected, view.displayMyOwnBoard());
+     assertEquals(expected1, view.displayMyOwnBoard());
+
+      b1.tryAddShip(s2);
+
+      String expected2 =
+       expectedHeader +
+      "A  |s|  A\n" +
+       "B  | |s B\n" +
+       expectedHeader;
+
+      assertEquals(expected2, view.displayMyOwnBoard());
 
     
     
@@ -143,11 +164,11 @@ public class BoardTextViewTest {
      b.fireAt(new Coordinate("C3"));
 
      String expected =
-       "  0|1|2|3\n" +
+       "  0|1|2|3  \n" +
        "A s| | |d A\n" +
        "B  |X| |d B\n" +
        "C  | | |d C\n" +
-       "  0|1|2|3\n";
+       "  0|1|2|3  \n";
 
      assertEquals(expected, v.displayEnemyBoard());
     
@@ -198,11 +219,11 @@ public class BoardTextViewTest {
     
     String expected =
       "     Your Ocean               Player B's Ocean\n" +//5+10+15=30=2*4+22
-      "  0|1|2|3                  0|1|2|3\n" +//2+16
+      "  0|1|2|3                    0|1|2|3  \n" +//2+16
       "A s| | |  A                A X| | |  A\n" +//16
       "B s| | |  B                B  | | |d B\n" +//16
       "C  | | |  C                C  | | |  C\n" +//16
-      "  0|1|2|3                  0|1|2|3\n";//2+16
+      "  0|1|2|3                    0|1|2|3  \n";//2+16
     
 
     

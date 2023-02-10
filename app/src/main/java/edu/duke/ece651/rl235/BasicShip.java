@@ -32,7 +32,8 @@ public abstract class BasicShip<T> implements Ship<T> {
     this.myDisplayInfo = myDisplayInfo;
 
     for (Coordinate c : where) {
-      this.myPieces.put(c, false);
+      //this.myPieces.put(c, false);
+      myPieces.put(c, false);
     }
 
   }
@@ -87,6 +88,7 @@ public abstract class BasicShip<T> implements Ship<T> {
   public void  recordHitAt(Coordinate where) {
     
     checkCoordinateInThisShip(where);
+    
     myPieces.put(where, true);
 
   }

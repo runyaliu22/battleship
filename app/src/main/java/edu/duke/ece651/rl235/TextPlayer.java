@@ -69,11 +69,11 @@ public class TextPlayer {
 
   //public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String myHeader, String enemyHeader) {
   
-  public String playOneTurn(Board<Character> enBoard, BoardTextView enview, String myHeader, String enHeader) throws IOException{
+  public String playOneTurn(Board<Character> enBoard, BoardTextView enView, String myHeader, String enHeader) throws IOException{
 
     out.println("Player " + name + "'s turn:\n");
 
-    out.println(view.displayMyBoardWithEnemyNextToIt(enview, myHeader, enHeader));
+    out.println(view.displayMyBoardWithEnemyNextToIt(enView, myHeader, enHeader));
 
     String s = inputReader.readLine();
 
@@ -133,6 +133,12 @@ public class TextPlayer {
 
     shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
 
+    shipsToPlace.addAll(Collections.nCopies(3, "Battleship"));
+    
+    shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
+
+
+
   }
 
   public void doPlacementPhase() throws IOException {
@@ -164,6 +170,8 @@ public class TextPlayer {
       doOnePlacement(s, shipCreationFns.get(s));
 
     }
+
+    out.println(view.displayMyOwnBoard());
 
   }
 
@@ -204,6 +212,7 @@ public class TextPlayer {
 
       try{
 
+        // throw new EOFException();
         if ( s == "" || s == null){
           throw new EOFException();
         }

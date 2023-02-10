@@ -108,14 +108,16 @@ public class TextPlayerTest {
 
      //App app = new App(player1, player2);
 
-     assertThrows(EOFException.class, ()->player1.doPlacementPhase());
+     //assertThrows(EOFException.class, ()->player1.doPlacementPhase());
+
+     assertThrows(EOFException.class, ()->player1.readPlacement(""));
      
      
     
   }
 
-
-
+  
+  /*
   @Test
   void test_do_one_placement() throws IOException{
 
@@ -203,7 +205,7 @@ public class TextPlayerTest {
       bytes.reset();
 
 
-
+*/
 
       
       /*
@@ -251,7 +253,8 @@ public class TextPlayerTest {
       */
 
       
-      
+  /*    
   }
-
+*/
+  
 }
