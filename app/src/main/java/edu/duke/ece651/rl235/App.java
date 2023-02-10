@@ -110,7 +110,7 @@ public class App {
     
   }
 
-  public String doAttackingPhase(Board<Character> p1Board, Board<Character> p2Board) throws IOException{
+  public void doAttackingPhase(Board<Character> p1Board, Board<Character> p2Board,BoardTextView myView, BoardTextView enView) throws IOException{
 
     TextPlayer currentPlayer = player1;
     TextPlayer otherPlayer = player2;
@@ -118,12 +118,26 @@ public class App {
     Board<Character> currentBoard = p1Board;
     Board<Character> otherBoard = p2Board;
 
+    BoardTextView currentView = myView;
+    BoardTextView otherView = enView;
+
+    
+    String currentHeader = "Player A's Ocean";
+    String otherHeader = "Player B's Ocean";
+    
     
     while (true) {
-      currentPlayer.playOneTurn(otherBoard); 
+      String message = currentPlayer.playOneTurn(otherBoard, otherView, "Your Ocean", otherHeader);
+      
+      System.out.println(message);
+      
       if (otherBoard.check_lost()) {
+
+        System.out.println("Player " + currentPlayer.getName() + " wins!");
         
-        return "Player " + currentPlayer.getName() + " wins!";
+        //return "Player " + currentPlayer.getName() + " wins!";
+        return;
+        
       }
    //swap current and other player for next time around loop
    TextPlayer temp1 = currentPlayer;
@@ -134,6 +148,14 @@ public class App {
    Board<Character> temp2 = otherBoard;
    otherBoard = currentBoard;
    currentBoard = temp2;
+
+   BoardTextView temp3 = otherView;
+   otherView = currentView;
+   currentView = temp3;
+
+   String temp4 = otherHeader;
+   otherHeader = currentHeader;
+   currentHeader = temp4;
    
     }
 
@@ -171,7 +193,12 @@ public class App {
    
     a.doPlacementPhase();//player 1&2 doOnePlacement!
 
-    a.doAttackingPhase(b1, b2);
+    BoardTextView p1View = new BoardTextView(b1);
+
+    BoardTextView p2View = new BoardTextView(b2);
+    
+
+    a.doAttackingPhase(b1, b2, p1View, p2View);
 
     
 

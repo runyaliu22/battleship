@@ -157,13 +157,14 @@ public class TextPlayerTest {
 
        app1.doPlacementPhase();
 
+       BoardTextView enView = new BoardTextView(b2);
       
 
-       assertEquals("You hit a submarine!\n", player1.playOneTurn(b2));
+       assertEquals("You hit a submarine!\n", player1.playOneTurn(b2, enView, "Your Ocean", "Player B's Ocean"));
 
-       assertEquals("You hit a destroyer!\n", player1.playOneTurn(b2));
+       assertEquals("You hit a destroyer!\n", player1.playOneTurn(b2, enView, "Your Ocean", "Player B's Ocean"));
 
-       assertEquals("You missed!\n", player1.playOneTurn(b2));
+       assertEquals("You missed!\n", player1.playOneTurn(b2, enView, "Your Ocean", "Player B's Ocean"));
          
        
        String prompt = "Player  where do you want to place a Destroyer?";//what does it do?
