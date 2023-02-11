@@ -97,6 +97,7 @@ public abstract class BasicShip<T> implements Ship<T> {
   public boolean wasHitAt(Coordinate where) {
 
     checkCoordinateInThisShip(where);
+    
     return myPieces.get(where);
   }
 

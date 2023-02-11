@@ -25,17 +25,27 @@ public class RectangleShip<T> extends BasicShip<T> {
 
     
   }
-
+  
+  /*
   public RectangleShip(String name,Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> myinfo, ShipDisplayInfo<T> eninfo){
 
-    super(makeCoords(upperLeft, width, height), myinfo, eninfo);//Is it right?
+    super(RectangleShip.makeCoords(upperLeft, width, height), myinfo, eninfo);//Is it right?
+    this.name = name;
+    //call the constructor of the parent class
+    
+  }
+  */
+
+   public RectangleShip(String name, Iterable<Coordinate> where, ShipDisplayInfo<T> myinfo, ShipDisplayInfo<T> eninfo){
+
+    super(where, myinfo, eninfo);//Is it right?
     this.name = name;
     //call the constructor of the parent class
     
   }
 
   public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<>(null, data));//calling the constructor right above
+    this(name, RectangleShip.makeCoords(upperLeft, width, height), new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<>(null, data));//calling the constructor right above
   }
   
   public RectangleShip(Coordinate upperLeft, T data, T onHit) {//convinience constructor
