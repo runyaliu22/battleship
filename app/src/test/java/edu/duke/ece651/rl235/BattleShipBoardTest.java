@@ -32,7 +32,44 @@ public class BattleShipBoardTest {
     
   }
   */
+  @Test
+  public void test_tryShip(){
+    Board<Character> b1 = new BattleShipBoard<Character> (10, 20, 'X');
 
+    AbstractShipFactory<Character> factory = new V2ShipFactory();
+     
+    Ship<Character> s1 = factory.makeBattleship(new Placement("a0u"));
+
+    Ship<Character> s2 = factory.makeBattleship(new Placement("a0r"));
+
+     //b1.tryShip(s1);
+     
+    assertEquals(null, b1.tryShip(s1));
+
+    b1.tryAddShip(s1);
+
+    assertEquals("That placement is invalid: the ship overlaps another ship.", b1.tryShip(s2));
+  }
+
+  @Test
+  public void test_whatShipIsAt(){
+     Board<Character> b1 = new BattleShipBoard<Character> (10, 20, 'X');
+     
+     AbstractShipFactory<Character> factory = new V2ShipFactory();
+     
+     Ship<Character> s1 = factory.makeBattleship(new Placement("a0u"));
+     
+     b1.tryAddShip(s1);
+     
+     Ship<Character > _s1= b1.whatShipIsAt(new Coordinate("a1"));
+     assertEquals(s1, _s1);
+
+     Ship<Character > _s= b1.whatShipIsAt(new Coordinate("a0"));
+     assertEquals(null, _s);
+     
+    
+  }
+  
   @Test
   
   public void test_try_add(){

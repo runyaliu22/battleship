@@ -182,7 +182,9 @@ public class App {
 
     BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
-    V1ShipFactory factory = new V1ShipFactory();
+    //V1ShipFactory factory = new V1ShipFactory();
+
+    V2ShipFactory factory = new V2ShipFactory();
 
     TextPlayer p1 = new TextPlayer("A", b1, input, System.out, factory);
 

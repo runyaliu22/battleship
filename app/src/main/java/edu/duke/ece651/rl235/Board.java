@@ -17,6 +17,10 @@ public interface Board<T> {
   public Ship<T> fireAt(Coordinate c);
 
   public boolean check_lost();
+
+  public Ship<T> whatShipIsAt(Coordinate where);
+
+  public String tryShip(Ship<T> toAdd);
   
 
 }

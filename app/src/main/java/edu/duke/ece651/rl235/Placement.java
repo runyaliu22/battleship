@@ -10,7 +10,7 @@ public class Placement {
 
     char ori = Character.toUpperCase(o);
 
-    if (ori != 'H' && ori != 'V') {
+    if (ori != 'H' && ori != 'V' && ori != 'U' && ori != 'D' && ori != 'R' && ori != 'L' ) {
       throw new IllegalArgumentException("Invalid orientation!");
     }
 
@@ -26,7 +26,7 @@ public class Placement {
 
     char ori = Character.toUpperCase(descr.charAt(2));
 
-    if (ori != 'H' && ori != 'V') {
+    if (ori != 'H' && ori != 'V' && ori != 'U' && ori != 'D' && ori != 'R' && ori != 'L' ) {
       throw new IllegalArgumentException("Invalid orientation!");
     }
 

@@ -91,6 +91,8 @@ public class RectangleShipTest {
 
     RectangleShip<Character> s1 = new RectangleShip<Character>("submarine", new Coordinate("A2"),1,3, 's', '*');
 
+    assertEquals('V', s1.getOrientation());
+
     Coordinate c1 = new Coordinate("B2");
 
     Coordinate c2  = new Coordinate("A2");

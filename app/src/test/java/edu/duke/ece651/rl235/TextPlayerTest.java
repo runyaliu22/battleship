@@ -72,7 +72,7 @@ public class TextPlayerTest {
 
       for (int i = 0; i < expected.length; i++){
 
-        Placement p = player1.readPlacement(prompt);
+        Placement p = player1.readPlacement(prompt, "Submarine");
 
         assertEquals(p, expected[i]);
 
@@ -110,11 +110,59 @@ public class TextPlayerTest {
 
      //assertThrows(EOFException.class, ()->player1.doPlacementPhase());
 
-     assertThrows(EOFException.class, ()->player1.readPlacement(""));
+     assertThrows(EOFException.class, ()->player1.readPlacement("", "Submarine"));
      
      
     
   }
+  
+
+  @Test
+  void test_shiptobeMoved_shiptobeAdded()throws IOException{
+    
+    StringReader sr = new StringReader("a1\na0\na1\nb3r");
+
+    BufferedReader br = new BufferedReader(sr);
+    
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+
+    PrintStream ps = new PrintStream(bytes, true);//write printstream into bytes
+
+    Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
+
+    AbstractShipFactory<Character> factory = new V2ShipFactory();
+
+    TextPlayer player1 = new TextPlayer("A", b1, br, ps, factory);
+
+    Ship<Character> s1 = factory.makeBattleship(new Placement(new Coordinate("a0"), 'u'));
+
+    b1.tryAddShip(s1);
+
+    //check shiptobemoved!
+    assertEquals(s1, player1.shiptobeMoved());
+
+    assertEquals(null, player1.shiptobeMoved());
+
+    b1.tryAddShip(s1);
+
+    b1.fireAt(new Coordinate("b0"));
+
+
+
+    player1.moveShip();
+
+    assertEquals(null, b1.whatIsAtForSelf(new Coordinate("b0")));
+    assertEquals('*', b1.whatIsAtForSelf(new Coordinate("b3")));
+
+    
+
+    
+     
+
+    
+    
+  }
+  
 
   
   /*

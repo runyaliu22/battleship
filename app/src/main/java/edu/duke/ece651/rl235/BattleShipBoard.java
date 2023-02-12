@@ -122,6 +122,18 @@ public class BattleShipBoard<T> implements Board<T> {
 
   }
 
+  //similar to tryddship but doesn't really add the ship!
+  public String tryShip(Ship<T> toAdd){
+
+    String s = placementChecker.checkPlacement(toAdd, this);
+    if (s == null){
+      return null;
+    }
+
+    return s;
+    
+  }
+
   public String tryAddShip(Ship<T> toAdd) {
 
     String s = placementChecker.checkPlacement(toAdd, this);
@@ -171,6 +183,15 @@ public class BattleShipBoard<T> implements Board<T> {
 
   }
 
+  @Override
+  public Ship<T> whatShipIsAt(Coordinate where) {
+    for (Ship<T> s : myShips) {
+      if (s.occupiesCoordinates(where)) {
+        return s;
+      }
+    }
+    return null;
+  }
 
 
   

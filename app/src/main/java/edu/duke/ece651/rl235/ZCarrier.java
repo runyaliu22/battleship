@@ -5,13 +5,17 @@ import java.util.HashSet;
 public class ZCarrier<T> extends BasicShip<T> {
 
   private final String name;
+  private final Character Orientation;
+  
 
-  public ZCarrier(String name, Iterable<Coordinate> where, ShipDisplayInfo<T> myinfo, ShipDisplayInfo<T> eninfo){
+  public ZCarrier(String name, Iterable<Coordinate> where, Character orientation, ShipDisplayInfo<T> myinfo, ShipDisplayInfo<T> eninfo){
 
     //super(TBattleship.makeCoords(upperLeft, orientation), myinfo, eninfo);//Is it right?
 
     super(where, myinfo, eninfo);
     this.name = name;
+
+    this.Orientation = orientation;
     
     //call the constructor of the parent class
     
@@ -19,7 +23,8 @@ public class ZCarrier<T> extends BasicShip<T> {
   
 
   public ZCarrier(String name, Coordinate upperLeft, Character orientation, T data, T onHit) {
-    this(name, ZCarrier.makeCoords(upperLeft, orientation), new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<>(null, data));//calling the constructor right above
+    this(name, ZCarrier.makeCoords(upperLeft, orientation), orientation, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<>(null, data));//calling the constructor right above
+    
   }
   
   
@@ -79,6 +84,14 @@ public class ZCarrier<T> extends BasicShip<T> {
   @Override
   public String getName() {
     return name;
+  }
+
+
+  @Override
+  public Character getOrientation() {
+
+    return Orientation;
+    
   }
 
   

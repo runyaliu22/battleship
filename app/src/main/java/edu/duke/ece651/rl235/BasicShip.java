@@ -1,5 +1,6 @@
 package edu.duke.ece651.rl235;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 //public class BasicShip implements Ship<Character> {
@@ -25,6 +26,8 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   // }
 
+  
+
   public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo, ShipDisplayInfo<T> enemyDisplayInfo) {
 
     this.enemyDisplayInfo = enemyDisplayInfo;
@@ -38,11 +41,78 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   }
 
+  public void update(HashMap<Coordinate, Boolean> myPieces_new){
+
+    myPieces.clear();
+
+    myPieces.putAll(myPieces_new);
+    
+  }
+
+  
   //why no override?
   public Iterable<Coordinate> getCoordinates(){
 
     return myPieces.keySet();
 
+  }
+
+  //coordinate row and column less than 0
+  public HashMap<Coordinate, Boolean> rotateMyPieces(ArrayList<Integer> rotationMatrix){
+
+    HashMap<Coordinate, Boolean> a = new HashMap<>();
+
+    for (Coordinate c : myPieces.keySet()){
+
+      a.put(new Coordinate(c.getRow() * rotationMatrix.get(0) + c.getColumn() * rotationMatrix.get(1), c.getRow() * rotationMatrix.get(2) + c.getColumn() * rotationMatrix.get(3)), myPieces.get(c));
+      
+      
+    }
+
+    /*
+    for (Coordinate b: a.keySet()){
+      System.out.println(b);
+      
+    }
+    */
+    return a;
+
+  }
+
+  
+  //can be moved to textplayer
+  //need to be changed, min row, min column
+  public Coordinate getUpperLeft(){
+
+    Coordinate myCoordinate = null;
+
+     for (Coordinate c : myPieces.keySet()){
+
+       //System.out.println(c);
+
+       if (myCoordinate == null){
+         myCoordinate = c;
+       }
+
+       else{
+
+         if (c.getRow() < myCoordinate.getRow()){
+           myCoordinate = c;
+         }
+
+         if (c.getRow() == myCoordinate.getRow() && c.getColumn() < myCoordinate.getColumn()){
+           myCoordinate = c;
+         }
+         
+       }
+      
+    }
+
+     return myCoordinate;
+
+    
+    
+    
   }
 
   
@@ -81,6 +151,7 @@ public abstract class BasicShip<T> implements Ship<T> {
         return false;
       }
     }
+    
     return true;
   }
 
@@ -110,11 +181,17 @@ public abstract class BasicShip<T> implements Ship<T> {
 
     //need to use myShip to determine what to display
     if (myShip){
+      
       return myDisplayInfo.getInfo(where, wasHitAt(where));//said for future convenience
+      
     }
     else{
+      
       return enemyDisplayInfo.getInfo(where,wasHitAt(where));
+      
     }
   }
+
+  
 
 }

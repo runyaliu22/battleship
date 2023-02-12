@@ -5,6 +5,7 @@ import java.util.HashSet;
 public class RectangleShip<T> extends BasicShip<T> {
 
   private final String name;
+  private final Character Orientation;
   
 
   static HashSet<Coordinate> makeCoords(Coordinate upperLeft, int width, int height){//public?
@@ -36,16 +37,25 @@ public class RectangleShip<T> extends BasicShip<T> {
   }
   */
 
-   public RectangleShip(String name, Iterable<Coordinate> where, ShipDisplayInfo<T> myinfo, ShipDisplayInfo<T> eninfo){
+  public RectangleShip(String name, Iterable<Coordinate> where, int width, int height, ShipDisplayInfo<T> myinfo, ShipDisplayInfo<T> eninfo){
 
     super(where, myinfo, eninfo);//Is it right?
+    
     this.name = name;
+
+    if (width > height){
+      this.Orientation = 'H';
+    }
+    else{
+      this.Orientation = 'V';
+    }
+    
     //call the constructor of the parent class
     
   }
 
   public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(name, RectangleShip.makeCoords(upperLeft, width, height), new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<>(null, data));//calling the constructor right above
+    this(name, RectangleShip.makeCoords(upperLeft, width, height), width,  height, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<>(null, data));//calling the constructor right above
   }
   
   public RectangleShip(Coordinate upperLeft, T data, T onHit) {//convinience constructor
@@ -58,6 +68,12 @@ public class RectangleShip<T> extends BasicShip<T> {
   public String getName() {
 
     return name;
+  }
+
+  @Override
+  public Character getOrientation() {
+    
+    return Orientation;
   }
 
 

@@ -1,5 +1,8 @@
 package edu.duke.ece651.rl235;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * This interface represents any type of Ship in our Battleship game. It is
  * generic in typename T, which is the type of information the view needs to
@@ -68,4 +71,11 @@ public interface Ship<T> {
    */
   public T getDisplayInfoAt(Coordinate where, boolean myShip);
 
+  public Character getOrientation();
+
+  public HashMap<Coordinate, Boolean> rotateMyPieces(ArrayList<Integer> rotationMatrix);
+
+  public Coordinate getUpperLeft();
+
+  public void update(HashMap<Coordinate, Boolean> myPieces_new);
 }
