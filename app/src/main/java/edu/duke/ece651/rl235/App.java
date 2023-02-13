@@ -208,9 +208,9 @@ public class App {
 
      PrintStream out = System.out;
 
-     //String computerInput = "a0v\na1v\na2v\na3v\na4v\ne0r\ne5l\nh0r\nO5r\ni6d\n" + iterateBoard(b1);
+     String computerInput = "a0v\na1v\na2v\na3v\na4v\ne0r\ne5l\nh0r\nO5r\ni6d\n" + iterateBoard(b1);
 
-     String computerInput = "a0v\na1v\nO5r\ni6d\n" + iterateBoard(b1);
+     //String computerInput = "a0v\na1v\nO5r\ni6d\n" + iterateBoard(b1);
 
     BufferedReader computeReader = new BufferedReader(new StringReader(computerInput));
     BufferedReader computeReader2 = new BufferedReader(new StringReader(computerInput));

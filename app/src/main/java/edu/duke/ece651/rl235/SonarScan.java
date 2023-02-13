@@ -17,12 +17,52 @@ public class SonarScan<T> {
     int column = center.getColumn();
     int row = center.getRow();
 
-    int k = 0;
+    int diff = 0;
+
+    HashMap<String, Integer> hashMap = new HashMap<>();
+
+    for (int i = row - 3; i <= row + 3; i++) {
+      for (int j = column - diff; j <= column + diff; j++) {
+        if (0 <= i && i < board.getHeight() && 0 <= j && j < board.getWidth()
+            && board.whatShipIsAt(new Coordinate(i, j)) != null) {
+          if (board.whatShipIsAt(new Coordinate(i, j)).getName() == "Submarine") {
+            hashMap.put("Submarine", hashMap.getOrDefault("Submarine", 0) + 1);
+          }
+          else if (board.whatShipIsAt(new Coordinate(i, j)).getName() == "Battleship") {
+            hashMap.put("Battleship", hashMap.getOrDefault("Battleship", 0) + 1);
+          }
+          else if (board.whatShipIsAt(new Coordinate(i, j)).getName() == "Destroyer") {
+            hashMap.put("Destroyer", hashMap.getOrDefault("Destroyer", 0) + 1);
+          }
+          else {
+            hashMap.put("Carrier", hashMap.getOrDefault("Carrier", 0) + 1);
+          }
+        }
+      }
+      if (i >= row) {
+        diff -= 1;
+      } else {
+        diff += 1;
+      }
+    }
+
+    return hashMap;
+
+  }
+  
+  /*
+  public HashMap<String, Integer> getScanResult(Coordinate center)
+  {
+
+    int column = center.getColumn();
+    int row = center.getRow();
+
+    int diff = 0;
 
     HashMap<String, Integer> hashMap = new HashMap<>();
 
     for (int j = column - 3; j <= column + 3; j++) {
-      for (int i = row - k; i <= row + k; i++) {
+      for (int i = row - diff; i <= row + diff; i++) {
         if (0 <= i && i < board.getHeight() && 0 <= j && j < board.getWidth()
             && board.whatShipIsAt(new Coordinate(i, j)) != null) {
           if (board.whatShipIsAt(new Coordinate(i, j)).getName() == "Submarine") {
@@ -37,15 +77,16 @@ public class SonarScan<T> {
         }
       }
       if (j >= column) {
-        k -= 1;
+        diff -= 1;
       } else {
-        k += 1;
+        diff += 1;
       }
     }
 
     return hashMap;
 
   }
+  */
 
   public String displayResult(HashMap<String, Integer> myMap) {
 

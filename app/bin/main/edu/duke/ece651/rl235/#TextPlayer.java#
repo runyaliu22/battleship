@@ -173,6 +173,8 @@ public class TextPlayer {
 
     Coordinate c = new Coordinate(s);//need to be a ship of myBoard
 
+    
+
     // Coordinate c = readCoordinate("Which ship do you want to move?\n");// error
     // handling
 
