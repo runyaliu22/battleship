@@ -1,6 +1,7 @@
 package edu.duke.ece651.rl235;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class BattleShipBoard<T> implements Board<T> {
@@ -14,6 +15,8 @@ public class BattleShipBoard<T> implements Board<T> {
   private final PlacementRuleChecker<T> placementChecker;
 
   private final HashSet<Coordinate> enemyMisses;
+
+  private final HashMap<Coordinate, T> enemyHits;
 
   private final T missInfo;
 
@@ -68,6 +71,7 @@ public class BattleShipBoard<T> implements Board<T> {
 
     this.myShips = new ArrayList<Ship<T>>();
     this.enemyMisses = new HashSet<>();
+    this.enemyHits = new HashMap<>();
 
     this.missInfo = missinfo;
     
@@ -103,7 +107,8 @@ public class BattleShipBoard<T> implements Board<T> {
     return true;
 
   }
-  
+
+  /*
   public Ship<T> fireAt(Coordinate c){//actually is fired at!
 
     for (Ship<T>s: myShips){
@@ -120,6 +125,25 @@ public class BattleShipBoard<T> implements Board<T> {
     
     
 
+  }
+  */
+
+  public Ship<T> fireAt(Coordinate c) {
+    for (Ship<T> s : myShips) {
+      if (s.occupiesCoordinates(c)) {
+        if (this.enemyMisses.contains(c)){
+          this.enemyMisses.remove(c);
+        }
+        this.enemyHits.put(c, s.getInfo(c));
+        s.recordHitAt(c);
+        return s;
+      }
+    }
+    if (this.enemyHits.containsKey(c)){
+      this.enemyHits.remove(c);
+    }
+    this.enemyMisses.add(c);
+    return null;
   }
 
   //similar to tryddship but doesn't really add the ship!
@@ -166,7 +190,7 @@ public class BattleShipBoard<T> implements Board<T> {
     return whatIsAt(where, false);
   }
 
-
+  /*
   protected T whatIsAt(Coordinate where, boolean isSelf){
     //should determine if it's isSelf or not
     for (Ship<T> s : myShips) {
@@ -181,6 +205,24 @@ public class BattleShipBoard<T> implements Board<T> {
     return null;//blank space
 
 
+  }
+*/
+  
+  protected T whatIsAt(Coordinate where, boolean isSelf) {
+    if (isSelf) {
+      for (Ship<T> s : myShips) {
+        if (s.occupiesCoordinates(where)) {
+          return s.getDisplayInfoAt(where, isSelf);
+        }
+      }
+    } else {
+      if (enemyMisses.contains(where)) {
+        return this.missInfo;
+      } else if (enemyHits.containsKey(where)) {
+        return enemyHits.get(where);
+       }
+    }
+    return null;
   }
 
   @Override

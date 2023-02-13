@@ -186,9 +186,9 @@ public class App {
 
     V2ShipFactory factory = new V2ShipFactory();
 
-    TextPlayer p1 = new TextPlayer("A", b1, input, System.out, factory);
+    TextPlayer p1 = new TextPlayer(3, 3, "A", b1, input, System.out, factory);
 
-    TextPlayer p2 = new TextPlayer("B", b2, input, System.out, factory);
+    TextPlayer p2 = new TextPlayer(3, 3, "B", b2, input, System.out, factory);
 
     App a = new App(p1, p2);
 

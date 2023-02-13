@@ -78,4 +78,6 @@ public interface Ship<T> {
   public Coordinate getUpperLeft();
 
   public void update(HashMap<Coordinate, Boolean> myPieces_new);
+
+  public T getInfo(Coordinate where);
 }

@@ -12,6 +12,10 @@ import java.util.function.Function;
 
 public class TextPlayer {
 
+  private  int moveChances;
+
+  private int sonarChances;
+  
   private final AbstractShipFactory<Character> shipFactory;
 
   private final Board<Character> theBoard;
@@ -38,7 +42,7 @@ public class TextPlayer {
 
   // private final HashMap<>
 
-  public TextPlayer(String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out,
+  public TextPlayer(Integer moveChances, Integer sonarChances,String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out,
       AbstractShipFactory<Character> factory) {
 
     // BufferedReader
@@ -52,6 +56,10 @@ public class TextPlayer {
 
     // this.shipFactory = new V1ShipFactory();//need this constructor to implement
 
+    this.moveChances = moveChances;
+
+    this.sonarChances = sonarChances;
+    
     this.shipFactory = factory;
 
     this.theBoard = theBoard;
@@ -78,6 +86,7 @@ public class TextPlayer {
 
     ArrayList<Integer> d = new ArrayList<>();
     d.addAll(Arrays.asList(0, -1, 1, 0));
+     this.orientationMatrix.put(3, d);
 
     this.orientation.put('U', 0);
     this.orientation.put('R', 1);
@@ -92,45 +101,86 @@ public class TextPlayer {
 
   // }
 
+  public int getMoveChances() {
+    return moveChances;
+  }
+
+  public void moveChancesUpdate() {
+    moveChances -= 1;
+  }
+
+  public int getSonarChances() {
+    return sonarChances;
+  }
+
+  public void sonarChancesUpdate() {
+    sonarChances -= 1;
+  }
+
   public Ship<Character> shiptobeMoved() throws IOException {
 
-     out.println("Which ship do you want to move?\n");
+    out.println("Which ship do you want to move?\n");
 
-     String s = inputReader.readLine();//error handling
+    String s = inputReader.readLine();// error handling
 
-     Coordinate c = new Coordinate(s);
+    Coordinate c = new Coordinate(s);
 
-     //Coordinate c = readCoordinate("Which ship do you want to move?\n");// error handling
+    // Coordinate c = readCoordinate("Which ship do you want to move?\n");// error
+    // handling
 
     return theBoard.whatShipIsAt(c);
 
   }
+
+  public Coordinate readCoordinateOfShipToMove(String prompt) throws IOException {
+    String s = null;
+    Coordinate p = null;
+    out.println(prompt);
+    s = inputReader.readLine();
+    if (s == "" || s == null) {
+      throw new EOFException();
+    }
+    p = new Coordinate(s);
+    if (!(0 <= p.getRow() && p.getRow() < this.theBoard.getHeight() && 0 <= p.getColumn()
+        && p.getColumn() < this.theBoard.getWidth())) {
+      throw new IllegalArgumentException("That coordinate goes off the board, you are re-prompted!\n");
+    }
+    if (this.theBoard.whatIsAtForSelf(p) == null) {
+      throw new IllegalArgumentException("No ship at that coordinate, you are re-prompted!\n");
+    }
+
+    return p;
+  }
   
 
-  public Ship<Character> shiptobeAdded(String ShipName, Function<Placement, Ship<Character>> createFn) throws IOException {
+  //make sure there's no collision but not acutally adding the ship
+  public Ship<Character> shiptobeAdded(String ShipName, Function<Placement, Ship<Character>> createFn)
+      throws IOException {
 
     // need error handling
-    //Ship<Character> ship_old = this.shiptobeMoved();// has getName method
+    // Ship<Character> ship_old = this.shiptobeMoved();// has getName method
 
     // out.println("Player: " + this.name +"Where do you want to move it to?
     // (Coordinate + Orientation)");
 
-    String prompt = "Player: " + this.name + "Where do you want to move it to? (Coordinate + Orientation)";
+    String prompt = "Player:  " + this.name + "Where do you want to move it to? (Coordinate + Orientation)";
 
     // String s = inputReader.readLine();//error handling
 
-    Placement p = this.readPlacement(prompt, ShipName);
+    Placement p = this.readPlacement(prompt, ShipName);//may try several times
 
     Ship<Character> ship_new = createFn.apply(p);
 
     String m = theBoard.tryShip(ship_new);
 
-    while (m != null) {
+    while (m != null) {//may try several times
 
       out.println(m);
+      
       p = readPlacement(prompt, ShipName);
 
       ship_new = createFn.apply(p);// interesting
+      
       m = theBoard.tryShip(ship_new);// add the ship to the board//avoid collision or off the board
 
     }
@@ -179,92 +229,127 @@ public class TextPlayer {
 
     HashMap<Coordinate, Boolean> ship_new_myPieces = new HashMap<>();
 
+    HashMap<Coordinate, Boolean> afterRotationMap = null;
+
+    Coordinate UL_new = ship_new.getUpperLeft();
+
+    Character new_orientation = ship_new.getOrientation();
+    Character old_orientation = ship_old.getOrientation();
+
     if (ship_new.getName() == "Battleship" || ship_new.getName() == "Carrier") {
 
-      Character new_orientation = ship_new.getOrientation();
-      Character old_orientation = ship_old.getOrientation();
+      //Character new_orientation = ship_new.getOrientation();
+      //Character old_orientation = ship_old.getOrientation();
 
       int new_int = orientation.get(new_orientation);
+      //System.out.println(new_int);
       int old_int = orientation.get(old_orientation);
 
-      Coordinate UL_new = ship_new.getUpperLeft();
+      // Coordinate UL_new = ship_new.getUpperLeft();
 
-      HashMap<Coordinate, Boolean> afterRotationMap = null;
+      // HashMap<Coordinate, Boolean> afterRotationMap = null;
 
-       int difference = new_int - old_int;
+      int difference = new_int - old_int;
 
-       if (difference >= 0){
-      
-         afterRotationMap = ship_old.rotateMyPieces(orientationMatrix.get(difference));
-         
-       }
-       else{
+      if (difference >= 0) {
 
-         afterRotationMap = ship_old.rotateMyPieces(orientationMatrix.get(4 + difference));
-         
-       }
+        afterRotationMap = ship_old.rotateMyPieces(orientationMatrix.get(difference));
 
-        
+      } else {
 
-        Iterable<Coordinate> afterRotationCoordinates = afterRotationMap.keySet();
-
-        Coordinate UL_old_rotate = this.getUpperLeft(afterRotationCoordinates);
-
-        int row_diff = UL_new.getRow() - UL_old_rotate.getRow();
-        int column_diff = UL_new.getColumn() - UL_old_rotate.getColumn();
-
-        for (Coordinate c : afterRotationCoordinates) {
-
-          ship_new_myPieces.put(new Coordinate(c.getRow() + row_diff, c.getColumn() + column_diff),
-              afterRotationMap.get(c));
-
-        }
-
-        
+        //System.out.println(difference);
+        afterRotationMap = ship_old.rotateMyPieces(orientationMatrix.get(4 + difference));
 
       }
 
-    ship_old.update(ship_new_myPieces);
+      /*
+       * 
+       * Iterable<Coordinate> afterRotationCoordinates = afterRotationMap.keySet();
+       * 
+       * Coordinate UL_old_rotate = this.getUpperLeft(afterRotationCoordinates);
+       * 
+       * int row_diff = UL_new.getRow() - UL_old_rotate.getRow();
+       * int column_diff = UL_new.getColumn() - UL_old_rotate.getColumn();
+       * 
+       * for (Coordinate c : afterRotationCoordinates) {
+       * 
+       * ship_new_myPieces.put(new Coordinate(c.getRow() + row_diff, c.getColumn() +
+       * column_diff),
+       * afterRotationMap.get(c));
+       * 
+       * }
+       * 
+       */
 
+    }
+
+    else {
+      if (old_orientation != new_orientation){
       
+        afterRotationMap = ship_old.rotateMyPieces(orientationMatrix.get(1));
 
-    
+      }
+
+      else{
+        afterRotationMap = ship_old.rotateMyPieces(orientationMatrix.get(0));
+      }
+
+    }
+
+    Iterable<Coordinate> afterRotationCoordinates = afterRotationMap.keySet();
+
+    Coordinate UL_old_rotate = this.getUpperLeft(afterRotationCoordinates);
+
+    int row_diff = UL_new.getRow() - UL_old_rotate.getRow();
+    int column_diff = UL_new.getColumn() - UL_old_rotate.getColumn();
+
+    for (Coordinate c : afterRotationCoordinates) {
+
+      ship_new_myPieces.put(new Coordinate(c.getRow() + row_diff, c.getColumn() + column_diff),
+          afterRotationMap.get(c));
+
+    }
+
+    ship_old.update(ship_new_myPieces);
 
   }
 
   /*
-
-  public Coordinate readCoordinate(String prompt) throws IOException {
-
-    String s = null;
-    boolean state = false;
-    Coordinate p = null;
-
-    while (!state) {
-      out.println(prompt);
-      s = inputReader.readLine();
-      try {
-        if (s == "" || s == null) {
-          throw new EOFException();
-        }
-
-        p = new Coordinate(s);
-
-        if (!(0 <= p.getRow() && p.getRow() < this.theBoard.getHeight() && 0 <= p.getColumn()
-            && p.getColumn() < this.theBoard.getWidth())) {
-          throw new IllegalArgumentException("That coordinate goes off the board, please enter again!\n");
-
-        }
-        state = true;
-      }
-
-      catch (IllegalArgumentException e) {
-        out.println(e.getMessage());
-      }
-    }
-    return p;
-  }
-  */
+   * 
+   * public Coordinate readCoordinate(String prompt) throws IOException {
+   * 
+   * String s = null;
+   * boolean state = false;
+   * Coordinate p = null;
+   * 
+   * while (!state) {
+   * out.println(prompt);
+   * s = inputReader.readLine();
+   * try {
+   * if (s == "" || s == null) {
+   * throw new EOFException();
+   * }
+   * 
+   * p = new Coordinate(s);
+   * 
+   * if (!(0 <= p.getRow() && p.getRow() < this.theBoard.getHeight() && 0 <=
+   * p.getColumn()
+   * && p.getColumn() < this.theBoard.getWidth())) {
+   * throw new
+   * IllegalArgumentException("That coordinate goes off the board, please enter again!\n"
+   * );
+   * 
+   * }
+   * state = true;
+   * }
+   * 
+   * catch (IllegalArgumentException e) {
+   * out.println(e.getMessage());
+   * }
+   * }
+   * return p;
+   * }
+   */
 
   public String getName() {
     return name;
@@ -273,14 +358,37 @@ public class TextPlayer {
   // public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String
   // myHeader, String enemyHeader) {
 
-  public String playOneTurn(Board<Character> enBoard, BoardTextView enView, String myHeader, String enHeader)
-      throws IOException {
+  public String readAction(String prompt) throws IOException {
 
-    out.println("Player " + name + "'s turn:\n");
+    
+    String s = null;
+    boolean valid = false;
+    while (!valid) {
+      out.println(prompt);
+      s = inputReader.readLine();
 
-    out.println(view.displayMyBoardWithEnemyNextToIt(enView, myHeader, enHeader));
+      try{
+        if ((!s.equals("F")) && (!s.equals("M")) && (!s.equals("S")) ){
+          throw new IllegalArgumentException("Supported action are 'F', 'S', 'M'!!!\n");
+        }
+        valid = true;
+      }
+      catch(IllegalArgumentException e){
+        out.println(e.getMessage());
+      }
+    
+    }
 
-    String s = inputReader.readLine();
+    return s;
+
+  }
+
+
+  public String fireShip(String prompt, Board<Character> enBoard)throws IOException{
+
+    out.println(prompt);
+
+     String s = inputReader.readLine();
 
     Coordinate c = new Coordinate(s);// need to take care of error handling!
 
@@ -309,7 +417,80 @@ public class TextPlayer {
 
     return "You missed!\n";
 
+    
   }
+  
+  public String playOneTurn(Board<Character> enBoard, BoardTextView enView, String myHeader, String enHeader)
+      throws IOException {
+
+     out.println("Player " + name + "'s turn:\n");
+
+    out.println(view.displayMyBoardWithEnemyNextToIt(enView, myHeader, enHeader));
+
+    String prompt = "Possible actions for Player " + this.name + ":\n\n" +
+        " F Fire at a square\n" +
+        " M Move a ship to another square (" + this.moveChances + " remaining)\n" +
+        " S Sonar scan (" + this.sonarChances + " remaining)\n\n" +
+        "Player" + this.name + ", what would you like to do?\n";
+    
+  String moveAction = this.readAction(prompt);
+
+  if (moveAction.equals("M")){
+
+    moveShip();
+    moveChancesUpdate();
+    
+    return "You have successfully moved the ship!";
+    
+  }
+
+  else if (moveAction.equals("F")){
+
+    String pr = "Player " + name + ", which ship would you like to fire?";
+
+    return fireShip(pr, enBoard);
+    
+    /*
+    String s = inputReader.readLine();
+
+    Coordinate c = new Coordinate(s);// need to take care of error handling!
+
+    enBoard.fireAt(c);
+
+    if (enBoard.whatIsAtForEnemy(c) == 's') {
+
+      return "You hit a submarine!\n";
+
+    }
+
+    if (enBoard.whatIsAtForEnemy(c) == 'd') {
+
+      return "You hit a destroyer!\n";
+    }
+
+    if (enBoard.whatIsAtForEnemy(c) == 'b') {// tested in main later!
+
+      return "You hit a battleship!\n";
+    }
+
+    if (enBoard.whatIsAtForEnemy(c) == 'c') {
+
+      return "You hit a carrier!\n";
+    }
+
+    return "You missed!\n";
+*/
+  }
+
+  else{
+    return "What?";
+  }
+  }
+
+
+  
+
+  
 
   // hashmap!
   protected void setupShipCreationMap() {

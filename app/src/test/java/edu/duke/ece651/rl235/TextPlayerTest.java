@@ -1,7 +1,6 @@
 package edu.duke.ece651.rl235;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
@@ -20,7 +19,7 @@ public class TextPlayerTest {
     PrintStream output = new PrintStream(bytes, true);
     Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
     V1ShipFactory shipFactory = new V1ShipFactory();
-    return new TextPlayer("A", board, input, output, shipFactory);
+    return new TextPlayer(3,3, "A", board, input, output, shipFactory);
   }
 
   /*
@@ -58,8 +57,8 @@ public class TextPlayerTest {
 
     //Board<Character> b = new BattleShipBoard<Character>(10, 20);
 
-    //App app = new App(b, sr, ps);//read from stringreader and writes to printstream
 
+    //App app = new App(b, sr, ps);//read from stringreader and writes to printstream
       String prompt = "Please enter a location for a ship:";
 
       Placement[] expected = new Placement[3];
@@ -102,7 +101,7 @@ public class TextPlayerTest {
 
     // Board<Character> b2 = new BattleShipBoard<Character>(10, 20);
       
-     TextPlayer player1 = new TextPlayer("A", b1, br, ps, new V1ShipFactory());
+    TextPlayer player1 = new TextPlayer(3, 3,"A", b1, br, ps, new V1ShipFactory());
 
      //TextPlayer player2 = new TextPlayer("B", b2, br, ps, new V1ShipFactory());
 
@@ -115,12 +114,46 @@ public class TextPlayerTest {
      
     
   }
+
   
+
+  @Test
+  void test_why()throws IOException{
+
+    StringReader sr = new StringReader("k5\nk5\no3r\n");
+
+    BufferedReader br = new BufferedReader(sr);
+    
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+
+    PrintStream ps = new PrintStream(bytes, true);//write printstream into bytes
+
+    Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
+
+    BoardTextView v1 = new BoardTextView(b1);
+
+    AbstractShipFactory<Character> factory = new V2ShipFactory();
+
+    TextPlayer player1 = new TextPlayer(3, 3,"A", b1, br, ps, factory);
+
+    Ship<Character> s1 = factory.makeCarrier(new Placement(new Coordinate("i5"), 'd'));
+
+    b1.tryAddShip(s1);
+
+    assertEquals(s1, player1.shiptobeMoved());
+
+    player1.moveShip();
+    
+
+    System.out.println(v1.displayMyOwnBoard());
+    
+    
+  }
 
   @Test
   void test_shiptobeMoved_shiptobeAdded()throws IOException{
     
-    StringReader sr = new StringReader("a1\na0\na1\nb3r");
+    StringReader sr = new StringReader("a1\na0\na1\nb3r\ng2\nc0u\n");
 
     BufferedReader br = new BufferedReader(sr);
     
@@ -132,7 +165,7 @@ public class TextPlayerTest {
 
     AbstractShipFactory<Character> factory = new V2ShipFactory();
 
-    TextPlayer player1 = new TextPlayer("A", b1, br, ps, factory);
+    TextPlayer player1 = new TextPlayer(3, 3,"A", b1, br, ps, factory);
 
     Ship<Character> s1 = factory.makeBattleship(new Placement(new Coordinate("a0"), 'u'));
 
@@ -147,20 +180,79 @@ public class TextPlayerTest {
 
     b1.fireAt(new Coordinate("b0"));
 
+    //Ship<Character> s2 = factory.makeCarrier(new Placement(new Coordinate("f2"), 'l'));
 
+    //b1.tryAddShip(s2);
 
     player1.moveShip();
 
     assertEquals(null, b1.whatIsAtForSelf(new Coordinate("b0")));
     assertEquals('*', b1.whatIsAtForSelf(new Coordinate("b3")));
 
+    Ship<Character> s2 = factory.makeCarrier(new Placement(new Coordinate("f2"), 'l'));
+
+    b1.tryAddShip(s2);
+    b1.fireAt(new Coordinate("f4"));
+
+    player1.moveShip();
+
+    assertEquals('*', b1.whatIsAtForSelf(new Coordinate("e1")));
+
+    assertEquals(null, b1.whatIsAtForSelf(new Coordinate("f4")));
+
+    assertEquals('c', b1.whatIsAtForSelf(new Coordinate("c0")));
     
 
     
-     
+    bytes.reset();
+
+    //StringReader sr1 = new StringReader("a1\na0\na1\nb3r\ng2\nc0u\n");
+
+    //assertEquals("a1", br.readLine());
+    
+    StringReader sr1 = new StringReader("a0\na0\na3h\nb1\nc3h\n");
+
+    BufferedReader br1 = new BufferedReader(sr1);
+
+    Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
+
+    BoardTextView v2 = new BoardTextView(b2);
+    
+    TextPlayer player2 = new TextPlayer(3, 3,"B", b2, br1, ps, factory);
+
+    Ship<Character> s3 = factory.makeDestroyer(new Placement("a0v"));
+
+    b2.tryAddShip(s3);
+
+    assertEquals(s3, player2.shiptobeMoved());
+
+    b2.fireAt(new Coordinate("a0"));
+
+    player2.moveShip();
+
+    //System.out.println(v2.displayMyOwnBoard());
+
+    assertEquals('*', b2.whatIsAtForSelf(new Coordinate("a5")));
+
+    Ship<Character> s4 = factory.makeDestroyer(new Placement("b1h"));
+
+    b2.tryAddShip(s4);
+
+    b2.fireAt(new Coordinate("b2"));
+
+    player2.moveShip();//two prompts!
+
+    //assertEquals('*', new Coordinate("c3"));
+    
+    //System.out.println(v2.displayMyOwnBoard());
+
+    
+
 
     
     
+    
+
   }
   
 

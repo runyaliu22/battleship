@@ -186,12 +186,15 @@ public abstract class BasicShip<T> implements Ship<T> {
       
     }
     else{
-      
+      //not useful any more
       return enemyDisplayInfo.getInfo(where,wasHitAt(where));
       
     }
   }
 
+  public T getInfo(Coordinate where){
+    return this.myDisplayInfo.getInfo(where, false);
+  }
   
 
 }
