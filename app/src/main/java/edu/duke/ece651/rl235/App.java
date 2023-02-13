@@ -6,9 +6,8 @@ package edu.duke.ece651.rl235;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 import java.io.PrintStream;
-import java.io.Reader;
+import java.io.StringReader;
 
 
 
@@ -162,8 +161,29 @@ public class App {
 
   }
 
+  private static String doModeChoosePhase(BufferedReader inputReader, PrintStream out) throws IOException {
+    
+    String prompt = "There are four modes of this game, please enter the corresponding number to play with:\n" +
+    "1. Human vs Human\n" + 
+    "2. Human vs Computer\n" + 
+    "3. Computer vs Human\n" + 
+    "4. Computer vs Computer\n";
+    out.println(prompt);
+
+    String s = inputReader.readLine();
+    return s;
+  }
   
   
+  public static String iterateBoard(Board<Character> board){
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < board.getHeight(); i++){
+      for (int j = 0; j < board.getWidth(); j++){
+        sb.append((char)('a' + i) + Integer.toString(j) + "\n");
+      }
+    }
+    return sb.toString();
+  }
   
   
   //independent of all classes, used for testing!
@@ -175,6 +195,10 @@ public class App {
 
     //a.doOnePlacement();
 
+    //String computerInput = "a0v\na1v\na2v\na3v\na4v\na5l\na7l\ne0l\nO0l\ns0l\n";
+
+    //BufferedReader computeReader = new BufferedReader(new StringReader(computerInput));
+    
 
     Board<Character> b1 = new BattleShipBoard<>(10, 20, 'X');
 
@@ -182,13 +206,62 @@ public class App {
 
     BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
+     PrintStream out = System.out;
+
+     //String computerInput = "a0v\na1v\na2v\na3v\na4v\ne0r\ne5l\nh0r\nO5r\ni6d\n" + iterateBoard(b1);
+
+     String computerInput = "a0v\na1v\nO5r\ni6d\n" + iterateBoard(b1);
+
+    BufferedReader computeReader = new BufferedReader(new StringReader(computerInput));
+    BufferedReader computeReader2 = new BufferedReader(new StringReader(computerInput));
+
+
     //V1ShipFactory factory = new V1ShipFactory();
 
     V2ShipFactory factory = new V2ShipFactory();
 
-    TextPlayer p1 = new TextPlayer(3, 3, "A", b1, input, System.out, factory);
+    TextPlayer p1;
+    TextPlayer p2;
 
-    TextPlayer p2 = new TextPlayer(3, 3, "B", b2, input, System.out, factory);
+
+    //TextPlayer p1 = new TextPlayer(3, 3, "A", b1, input, System.out, factory);
+
+    //TextPlayer p2 = new TextPlayer(3, 3, "B", b2, input, System.out, factory);
+
+    
+
+    String mode = doModeChoosePhase(input, out);
+
+
+    if (mode.equals("1")){
+      
+      p1 = new TextPlayer(3, 3, "A", b1, input, System.out, factory);
+      p2 = new TextPlayer(3, 3, "B", b2, input, System.out, factory);
+      
+    }
+
+    else if (mode.equals("2")){
+      p1 = new TextPlayer(3, 3, "A", b1, input, System.out, factory);
+      p2 = new ComputerPlayer(3, 3, "Computer B", b2, computeReader, System.out, factory);
+      
+      
+    }
+
+    else if (mode.equals("3")){
+      p1 = new ComputerPlayer(3, 3, "Computer A", b1, computeReader, System.out, factory);
+      p2 = new TextPlayer(3, 3, "B", b2, input, System.out, factory);
+      
+      
+    }
+
+    else{
+      p1 = new ComputerPlayer(3, 3, "Computer A", b1, computeReader, System.out, factory);
+      p2 = new ComputerPlayer(3, 3, "Computer B", b2, computeReader2, System.out, factory);
+      
+      
+    }
+
+    
 
     App a = new App(p1, p2);
 

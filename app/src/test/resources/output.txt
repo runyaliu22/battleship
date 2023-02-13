@@ -1,3 +1,9 @@
+There are four modes of this game, please enter the corresponding number to play with:
+1. Human vs Human
+2. Human vs Computer
+3. Computer vs Human
+4. Computer vs Computer
+
   0|1|2|3|4|5|6|7|8|9  
 A  | | | | | | | | |  A
 B  | | | | | | | | |  B
@@ -81,6 +87,7 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9  
 
 Player A  where do you want to place a Battleship?
+Invalid orientation!
   0|1|2|3|4|5|6|7|8|9  
 A s|d|b| | | | | | |  A
 B s|d|b|b| | | | | |  B
@@ -106,15 +113,15 @@ T  | | | | | | | | |  T
 
 Player A  where do you want to place a Carrier?
   0|1|2|3|4|5|6|7|8|9  
-A s|d|b| | | | | | |  A
-B s|d|b|b| | | | | |  B
+A s|d|b| | | | |c|c|c A
+B s|d|b|b| |c|c|c|c|  B
 C  |d|b| | | | | | |  C
 D  | | | | | | | | |  D
-E  | |c| | | | | | |  E
-F  | |c|c| | | | | |  F
-G  | |c|c| | | | | |  G
-H  | | |c| | | | | |  H
-I  | | |c| | | | | |  I
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
 J  | | | | | | | | |  J
 K  | | | | | | | | |  K
 L  | | | | | | | | |  L
@@ -129,15 +136,15 @@ T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9  
 
   0|1|2|3|4|5|6|7|8|9  
-A s|d|b| | | | | | |  A
-B s|d|b|b| | | | | |  B
+A s|d|b| | | | |c|c|c A
+B s|d|b|b| |c|c|c|c|  B
 C  |d|b| | | | | | |  C
 D  | | | | | | | | |  D
-E  | |c| | | | | | |  E
-F  | |c|c| | | | | |  F
-G  | |c|c| | | | | |  G
-H  | | |c| | | | | |  H
-I  | | |c| | | | | |  I
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
 J  | | | | | | | | |  J
 K  | | | | | | | | |  K
 L  | | | | | | | | |  L
@@ -174,7 +181,7 @@ S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9  
 
-Player B: you are going to place the following ships (which are all
+Player Computer B: you are going to place the following ships (which are all
 rectangular). For each ship, type the coordinate of the upper left
 side of the ship, followed by either H (for horizontal) or V (for
 vertical).  For example M4H would place a ship horizontally starting
@@ -185,10 +192,10 @@ at M4 and going to the right.  You have
 3 "Battleships" that are TShaped
 2 "Carriers" that are ZShaped
 
-Player B  where do you want to place a Submarine?
+Player Computer B  where do you want to place a Submarine?
   0|1|2|3|4|5|6|7|8|9  
-A s|s| | | | | | | |  A
-B  | | | | | | | | |  B
+A s| | | | | | | | |  A
+B s| | | | | | | | |  B
 C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
@@ -209,11 +216,11 @@ S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9  
 
-Player B  where do you want to place a Destroyer?
+Player Computer B  where do you want to place a Destroyer?
   0|1|2|3|4|5|6|7|8|9  
-A s|s| | | | | | | |  A
-B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C
+A s|d| | | | | | | |  A
+B s|d| | | | | | | |  B
+C  |d| | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
@@ -233,15 +240,15 @@ S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9  
 
-Player B  where do you want to place a Battleship?
+Player Computer B  where do you want to place a Battleship?
   0|1|2|3|4|5|6|7|8|9  
-A s|s| | | | | | | |  A
-B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C
+A s|d| | | | | | | |  A
+B s|d| | | | | | | |  B
+C  |d| | | | | | | |  C
 D  | | | | | | | | |  D
-E  | | |b| | | | | |  E
-F  | | |b|b| | | | |  F
-G  | | |b| | | | | |  G
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
 H  | | | | | | | | |  H
 I  | | | | | | | | |  I
 J  | | | | | | | | |  J
@@ -249,56 +256,56 @@ K  | | | | | | | | |  K
 L  | | | | | | | | |  L
 M  | | | | | | | | |  M
 N  | | | | | | | | |  N
-O  | | | | | | | | |  O
-P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q
+O  | | | | |b| | | |  O
+P  | | | | |b|b| | |  P
+Q  | | | | |b| | | |  Q
 R  | | | | | | | | |  R
 S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9  
 
-Player B  where do you want to place a Carrier?
+Player Computer B  where do you want to place a Carrier?
   0|1|2|3|4|5|6|7|8|9  
-A s|s| | | | | | | |  A
-B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C
+A s|d| | | | | | | |  A
+B s|d| | | | | | | |  B
+C  |d| | | | | | | |  C
 D  | | | | | | | | |  D
-E  | | |b| | | | | |  E
-F  | | |b|b| | | | |  F
-G  | | |b| | | | | |  G
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
 H  | | | | | | | | |  H
-I  | | | | | | | | |  I
-J  | |c| | | | | | |  J
-K  | |c|c| | | | | |  K
-L  | |c|c| | | | | |  L
-M  | | |c| | | | | |  M
-N  | | |c| | | | | |  N
-O  | | | | | | | | |  O
-P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q
+I  | | | | | |c| | |  I
+J  | | | | | |c|c| |  J
+K  | | | | | |c|c| |  K
+L  | | | | | | |c| |  L
+M  | | | | | | |c| |  M
+N  | | | | | | | | |  N
+O  | | | | |b| | | |  O
+P  | | | | |b|b| | |  P
+Q  | | | | |b| | | |  Q
 R  | | | | | | | | |  R
 S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9  
 
   0|1|2|3|4|5|6|7|8|9  
-A s|s| | | | | | | |  A
-B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C
+A s|d| | | | | | | |  A
+B s|d| | | | | | | |  B
+C  |d| | | | | | | |  C
 D  | | | | | | | | |  D
-E  | | |b| | | | | |  E
-F  | | |b|b| | | | |  F
-G  | | |b| | | | | |  G
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
 H  | | | | | | | | |  H
-I  | | | | | | | | |  I
-J  | |c| | | | | | |  J
-K  | |c|c| | | | | |  K
-L  | |c|c| | | | | |  L
-M  | | |c| | | | | |  M
-N  | | |c| | | | | |  N
-O  | | | | | | | | |  O
-P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q
+I  | | | | | |c| | |  I
+J  | | | | | |c|c| |  J
+K  | | | | | |c|c| |  K
+L  | | | | | | |c| |  L
+M  | | | | | | |c| |  M
+N  | | | | | | | | |  N
+O  | | | | |b| | | |  O
+P  | | | | |b|b| | |  P
+Q  | | | | |b| | | |  Q
 R  | | | | | | | | |  R
 S  | | | | | | | | |  S
 T  | | | | | | | | |  T
@@ -308,15 +315,15 @@ Player A's turn:
 
      Your Ocean                           Player B's Ocean
   0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A s|d|b| | | | | | |  A                A  | | | | | | | | |  A
-B s|d|b|b| | | | | |  B                B  | | | | | | | | |  B
+A s|d|b| | | | |c|c|c A                A  | | | | | | | | |  A
+B s|d|b|b| |c|c|c|c|  B                B  | | | | | | | | |  B
 C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
 D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | | | | | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
 J  | | | | | | | | |  J                J  | | | | | | | | |  J
 K  | | | | | | | | |  K                K  | | | | | | | | |  K
 L  | | | | | | | | |  L                L  | | | | | | | | |  L
@@ -349,27 +356,31 @@ Player A: Let's choose a coordinate as the center to scan! The scan pattern, whe
 
 Submarines occupy 0 squares
 Destroyers occupy 1 squares
-Battleships occupy 4 squares
+Battleships occupy 0 squares
 Carriers occupy 0 squares
 
-Player B's turn:
+Player Computer B's turn:
 
-     Your Ocean                           Player A's Ocean
+You hit a submarine at a0!
+
+Player A's turn:
+
+     Your Ocean                           Player B's Ocean
   0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A s|s| | | | | | | |  A                A  | | | | | | | | |  A
-B  | | | | | | | | |  B                B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
+A *|d|b| | | | |c|c|c A                A  | | | | | | | | |  A
+B s|d|b|b| |c|c|c|c|  B                B  | | | | | | | | |  B
+C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
 D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | |b| | | | | |  E                E  | | | | | | | | |  E
-F  | | |b|b| | | | |  F                F  | | | | | | | | |  F
-G  | | |b| | | | | |  G                G  | | | | | | | | |  G
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
 H  | | | | | | | | |  H                H  | | | | | | | | |  H
 I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | | | | |  M                M  | | | | | | | | |  M
-N  | | |c| | | | | |  N                N  | | | | | | | | |  N
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
 O  | | | | | | | | |  O                O  | | | | | | | | |  O
 P  | | | | | | | | |  P                P  | | | | | | | | |  P
 Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
@@ -378,253 +389,34 @@ S  | | | | | | | | |  S                S  | | | | | | | | |  S
 T  | | | | | | | | |  T                T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
 
-Possible actions for Player B:
+Possible actions for Player A:
 
  F Fire at a square
  M Move a ship to another square (3 remaining)
- S Sonar scan (3 remaining)
+ S Sonar scan (2 remaining)
 
-PlayerB, what would you like to do?
+PlayerA, what would you like to do?
 
-Player B, which ship would you like to fire?
+Player A, which coordinate  would you like to fire?
 You hit a submarine!
 
+Player Computer B's turn:
+
+You hit a destroyer at a1!
+
 Player A's turn:
 
      Your Ocean                           Player B's Ocean
   0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|d|b| | | | | | |  A                A  | | | | | | | | |  A
-B s|d|b|b| | | | | |  B                B  | | | | | | | | |  B
+A *|*|b| | | | |c|c|c A                A s| | | | | | | | |  A
+B s|d|b|b| |c|c|c|c|  B                B  | | | | | | | | |  B
 C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
 D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | | | | | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You hit a submarine!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s| | | | | | | | |  A
-B  | | | | | | | | |  B                B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | |b| | | | | |  E                E  | | | | | | | | |  E
-F  | | |b|b| | | | |  F                F  | | | | | | | | |  F
-G  | | |b| | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | | | | |  M                M  | | | | | | | | |  M
-N  | | |c| | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You missed!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|d|b| | | | | | |  A                A s| | | | | | | | |  A
-B s|d|b|b| | | | | |  B                B  | | | | | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | | | | | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You hit a battleship!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s| | | | | | | | |  A
-B  | | | | | | | | |  B                B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | |*| | | | | |  E                E  | | |X| | | | | |  E
-F  | | |b|b| | | | |  F                F  | | | | | | | | |  F
-G  | | |b| | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | | | | |  M                M  | | | | | | | | |  M
-N  | | |c| | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Which ship do you want to move?
-
-Player:  BWhere do you want to move it to? (Coordinate + Orientation)
-You have successfully moved the ship!
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|d|b| | | | | | |  A                A s| | | | | | | | |  A
-B s|d|b|b| | | | | |  B                B  | | | | | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | | |b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s| | | | | | | | |  A
-B  | | | | | | | | |  B                B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
 F  | | | | | | | | |  F                F  | | | | | | | | |  F
 G  | | | | | | | | |  G                G  | | | | | | | | |  G
 H  | | | | | | | | |  H                H  | | | | | | | | |  H
 I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a destroyer!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|b| | | | | | |  A                A s| | | | | | | | |  A
-B s|d|b|b| | | | | |  B                B  | | | | | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
 J  | | | | | | | | |  J                J  | | | | | | | | |  J
 K  | | | | | | | | |  K                K  | | | | | | | | |  K
 L  | | | | | | | | |  L                L  | | | | | | | | |  L
@@ -646,1100 +438,3 @@ Possible actions for Player A:
 
 PlayerA, what would you like to do?
 
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d| | | | | | | |  A
-B  | | | | | | | | |  B                B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Supported action are 'F', 'S', 'M'!!!
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a destroyer!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|b| | | | | | |  A                A s| |X| | | | | | |  A
-B s|d|b|b| | | | | |  B                B  | | | | | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d| | | | | | | |  A
-B  | | | | | | | | |  B                B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a battleship!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B s|d|b|b| | | | | |  B                B  | | | | | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B  | | | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a submarine!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|d|b|b| | | | | |  B                B X| | | | | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s| | | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a destroyer!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|b|b| | | | | |  B                B X|X| | | | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d| | | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a battleship!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|b| | | | | |  B                B X|X|X| | | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b| | | | | | |  B
-C d|d|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a battleship!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |d|b| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You hit a destroyer!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|d| | | | | | |  C                C  | | | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a destroyer!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |*|b| | | | | | |  C                C  |d| | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You hit a destroyer!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|*| | | | | | |  C                C  |d| | | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a battleship!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |*|*| | | | | | |  C                C  |d|d| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |c| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|*| | | | | | |  C                C  |d|b| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | | |X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a carrier!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |*|*| | | | | | |  C                C  |d|d| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |*| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |c|c| | | | | |  F                F  | | | | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|*| | | | | | |  C                C  |d|b| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | |c|X| | | | | |  E
-F  | | | | | | | | |  F                F  | | | | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a carrier!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |*|*| | | | | | |  C                C  |d|d| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |*| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |*|c| | | | | |  F                F  | |X| | | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|*| | | | | | |  C                C  |d|b| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | |c|X| | | | | |  E
-F  | | | | | | | | |  F                F  | |c| | | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a carrier!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |*|*| | | | | | |  C                C  |d|d| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |*| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |*|*| | | | | |  F                F  | |X|X| | | | | |  F
-G  | |c|c| | | | | |  G                G  | | | | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Supported action are 'F', 'S', 'M'!!!
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|*| | | | | | |  C                C  |d|b| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | |c|X| | | | | |  E
-F  | | | | | | | | |  F                F  | |c|c| | | | | |  F
-G  | | | | | | | | |  G                G  | | | | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a carrier!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |*|*| | | | | | |  C                C  |d|d| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |*| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |*|*| | | | | |  F                F  | |X|X| | | | | |  F
-G  | |*|c| | | | | |  G                G  | |X| | | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|*| | | | | | |  C                C  |d|b| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | |c|X| | | | | |  E
-F  | | | | | | | | |  F                F  | |c|c| | | | | |  F
-G  | | | | | | | | |  G                G  | |c| | | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a carrier!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |*|*| | | | | | |  C                C  |d|d| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |*| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |*|*| | | | | |  F                F  | |X|X| | | | | |  F
-G  | |*|*| | | | | |  G                G  | |X|X| | | | | |  G
-H  | | |c| | | | | |  H                H  | | | | | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|*| | | | | | |  C                C  |d|b| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | |c|X| | | | | |  E
-F  | | | | | | | | |  F                F  | |c|c| | | | | |  F
-G  | | | | | | | | |  G                G  | |c|c| | | | | |  G
-H  | | | | | | | | |  H                H  | | | | | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a carrier!
-
-Player A's turn:
-
-     Your Ocean                           Player B's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|*|*| | | | | | |  A                A s| |X| | | | | | |  A
-B *|*|*|*| | | | | |  B                B X|X|X|X| | | | | |  B
-C  |*|*| | | | | | |  C                C  |d|d| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | |*| | | | | | |  E                E  | |X|b| | | | | |  E
-F  | |*|*| | | | | |  F                F  | |X|X| | | | | |  F
-G  | |*|*| | | | | |  G                G  | |X|X| | | | | |  G
-H  | | |*| | | | | |  H                H  | | |X| | | | | |  H
-I  | | |c| | | | | |  I                I  | | | | | | | | |  I
-J  | | | | | | | | |  J                J  | | | | | | | | |  J
-K  | | | | | | | | |  K                K  | | | | | | | | |  K
-L  | | | | | | | | |  L                L  | | | | | | | | |  L
-M  | | | | | | | | |  M                M  | | | | | | | | |  M
-N  | | | | | | | | |  N                N  | | | | | | | | |  N
-O  | | | | | | | | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player A:
-
- F Fire at a square
- M Move a ship to another square (3 remaining)
- S Sonar scan (2 remaining)
-
-PlayerA, what would you like to do?
-
-Player A, which ship would you like to fire?
-You missed!
-
-Player B's turn:
-
-     Your Ocean                           Player A's Ocean
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-A *|s| | | | | | | |  A                A s|d|b| | | | | | |  A
-B  | | | | | | | | |  B                B s|d|b|b| | | | | |  B
-C d|*|*| | | | | | |  C                C  |d|b| | | | | | |  C
-D  | | | | | | | | |  D                D  | | | | | | | | |  D
-E  | | | | | | | | |  E                E  | |c|X| | | | | |  E
-F  | | | | | | | | |  F                F  | |c|c| | | | | |  F
-G  | | | | | | | | |  G                G  | |c|c| | | | | |  G
-H  | | | | | | | | |  H                H  | | |c| | | | | |  H
-I  | | | | | | | | |  I                I  | | | | | | | | |  I
-J  | |c| | | | | | |  J                J  | | | | | | | | |  J
-K  | |c|c| | | | | |  K                K  | | | | | | | | |  K
-L  | |c|c| | | | | |  L                L  | | | | | | | | |  L
-M  | | |c| | |*| | |  M                M  | | | | | | | | |  M
-N  | | |c| | |b|b| |  N                N  | | | | | | | | |  N
-O  | | | | | |b| | |  O                O  | | | | | | | | |  O
-P  | | | | | | | | |  P                P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R                R  | | | | | | | | |  R
-S  | | | | | | | | |  S                S  | | | | | | | | |  S
-T  | | | | | | | | |  T                T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9  
-
-Possible actions for Player B:
-
- F Fire at a square
- M Move a ship to another square (2 remaining)
- S Sonar scan (3 remaining)
-
-PlayerB, what would you like to do?
-
-Player B, which ship would you like to fire?
-You hit a carrier!
-
-Player B wins!

@@ -22,11 +22,13 @@ public class TextPlayer {
 
   private final BoardTextView view;
 
-  private final BufferedReader inputReader;
+  protected final BufferedReader inputReader;
 
-  private final PrintStream out;
+  protected final PrintStream out;
 
-  private final String name;
+  //private final String name;
+
+  protected final String name;
 
   private final ArrayList<String> shipsToPlace = new ArrayList<>();
 
@@ -475,7 +477,7 @@ public class TextPlayer {
 
   else if (moveAction.equals("F")){
 
-    String pr = "Player " + name + ", which ship would you like to fire?";
+    String pr = "Player " + name + ", which coordinate  would you like to fire?";
 
     return fireShip(pr, enBoard);
     
