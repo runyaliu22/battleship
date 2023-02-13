@@ -116,6 +116,52 @@ public class TextPlayer {
   public void sonarChancesUpdate() {
     sonarChances -= 1;
   }
+  
+
+  public Coordinate readCoordinate(String prompt) throws IOException {
+    String s = null;
+    boolean valid = false;
+    Coordinate p = null;
+    while (!valid) {
+      out.println(prompt);
+      s = inputReader.readLine();
+      try {
+        if (s == "" || s == null) {
+          throw new EOFException();
+        }
+        p = new Coordinate(s);
+        if (!(0 <= p.getRow() && p.getRow() < this.theBoard.getHeight() && 0 <= p.getColumn()
+            && p.getColumn() < this.theBoard.getWidth())) {
+          throw new IllegalArgumentException("That coordinate goes off the board, please enter again!\n");
+        }
+        valid = true;
+      } catch (IllegalArgumentException e) {
+        out.println(e.getMessage());
+      }
+    }
+    return p;
+  }
+
+  public String scanShip(Board<Character> enemyBoard) throws IOException{
+
+    String prompt = "Player " + this.name
+            + ": Let's choose a coordinate as the center to scan! The scan pattern, where C is the center, is: \n" +
+            "   *\n" +
+            "  ***\n" +
+            " *****\n" +
+            "***C***\n" +
+            " *****\n" +
+            "  ***\n" +
+            "   *\n";
+
+    Coordinate center = readCoordinate(prompt);
+
+    SonarScan<Character> sonarScan = new SonarScan<>(enemyBoard);
+    HashMap<String, Integer> myMap = sonarScan.getScanResult(center);
+    return sonarScan.displayResult(myMap);
+    
+    
+  }
 
   public Ship<Character> shiptobeMoved() throws IOException {
 
@@ -123,34 +169,17 @@ public class TextPlayer {
 
     String s = inputReader.readLine();// error handling
 
-    Coordinate c = new Coordinate(s);
+    Coordinate c = new Coordinate(s);//need to be a ship of myBoard
 
     // Coordinate c = readCoordinate("Which ship do you want to move?\n");// error
     // handling
 
-    return theBoard.whatShipIsAt(c);
+    return theBoard.whatShipIsAt(c);//theBoard is myBoard
 
   }
 
-  public Coordinate readCoordinateOfShipToMove(String prompt) throws IOException {
-    String s = null;
-    Coordinate p = null;
-    out.println(prompt);
-    s = inputReader.readLine();
-    if (s == "" || s == null) {
-      throw new EOFException();
-    }
-    p = new Coordinate(s);
-    if (!(0 <= p.getRow() && p.getRow() < this.theBoard.getHeight() && 0 <= p.getColumn()
-        && p.getColumn() < this.theBoard.getWidth())) {
-      throw new IllegalArgumentException("That coordinate goes off the board, you are re-prompted!\n");
-    }
-    if (this.theBoard.whatIsAtForSelf(p) == null) {
-      throw new IllegalArgumentException("No ship at that coordinate, you are re-prompted!\n");
-    }
-
-    return p;
-  }
+  
+  
   
 
   //make sure there's no collision but not acutally adding the ship
@@ -483,7 +512,9 @@ public class TextPlayer {
   }
 
   else{
-    return "What?";
+ 
+    sonarChancesUpdate();
+    return  scanShip(enBoard);
   }
   }
 

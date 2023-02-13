@@ -180,16 +180,16 @@ public abstract class BasicShip<T> implements Ship<T> {
     //return myDisplayInfo.getInfo(wasHitAt(where));//added
 
     //need to use myShip to determine what to display
-    if (myShip){
+    //if (myShip){
       
       return myDisplayInfo.getInfo(where, wasHitAt(where));//said for future convenience
       
-    }
-    else{
+      //}
+      //else{
       //not useful any more
-      return enemyDisplayInfo.getInfo(where,wasHitAt(where));
+      //return enemyDisplayInfo.getInfo(where,wasHitAt(where));
       
-    }
+      //}
   }
 
   public T getInfo(Coordinate where){
